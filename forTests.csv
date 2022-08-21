@@ -1,0 +1,7 @@
+id,type,name,status,description,duration,startTime,epic
+1,TASK,task for tests,NEW,description,20,2022-01-01T10:15:30
+2,EPIC,epic for tests,DONE,epic description for test,21,2022-01-04T10:00:00
+3,EPIC,empty epic for tests,NEW,epic descr,22,2022-01-03T10:25:30
+4,SUBTASK,subtask for tests,DONE,sub disc for tests,23,2022-01-02T11:15:30,2
+
+1,3

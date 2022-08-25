@@ -8,7 +8,9 @@ import tasks.Epic;
 import tasks.Status;
 import tasks.Subtask;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +23,7 @@ class EpicTest {
     @BeforeEach
      void createSubtasks() {
         manager = Managers.getDefault("input.csv");
-        epic = new Epic("ep2", "cool epic doesn't need subtasks", Status.NEW, (long) 0,
+        epic = new Epic("ep2", "cool epic doesn't need subtasks", Status.NEW, Duration.ZERO,
                 LocalDateTime.of(2022, 1, 1, 0, 0));
         epicTaskNum = manager.addNewEpic(epic);
     }
@@ -34,10 +36,12 @@ class EpicTest {
 
     @Test
     void newEpicWithTwoNewSubtasks() {
-        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.NEW, (long) 20,
+        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.NEW,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
-        subtaskSub = new Subtask("sub2", "subsub", Status.NEW, (long) 20,
+        subtaskSub = new Subtask("sub2", "subsub", Status.NEW,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
@@ -47,10 +51,12 @@ class EpicTest {
 
     @Test
     void doneEpicWithTwoDoneSubtasks() {
-        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE, (long) 20,
+        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2021, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
-        subtaskSub = new Subtask("sub2", "subsub", Status.DONE, (long) 20,
+        subtaskSub = new Subtask("sub2", "subsub", Status.DONE,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
@@ -60,10 +66,12 @@ class EpicTest {
 
     @Test
     void inProgressEpicWithDoneAndNewSubtasks() {
-        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE, (long) 20,
+        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 2, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
-        subtaskSub = new Subtask("sub2", "subsub", Status.NEW, (long) 20,
+        subtaskSub = new Subtask("sub2", "subsub", Status.NEW,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 2, 1, 0, 21), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
@@ -73,10 +81,12 @@ class EpicTest {
 
     @Test
     void inProgressEpicWithTwoInProgressSubtasks() {
-        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.IN_PROGRESS, (long) 20,
+        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.IN_PROGRESS,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 3, 1, 0, 21), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
-        subtaskSub = new Subtask("sub2", "subsub", Status.IN_PROGRESS, (long) 20,
+        subtaskSub = new Subtask("sub2", "subsub", Status.IN_PROGRESS,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 3, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
@@ -86,14 +96,16 @@ class EpicTest {
 
     @Test
     void epicWithSubtasksDurationAndStartEndTimeTest() {
-        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE, (long) 20,
+        Subtask subtaskSub = new Subtask("sub1", "little subbie", Status.DONE,
+                Duration.of((long) 20, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 5, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
-        subtaskSub = new Subtask("sub2", "subsub", Status.NEW, (long) 30,
+        subtaskSub = new Subtask("sub2", "subsub", Status.NEW,
+                Duration.of((long) 30, ChronoUnit.MINUTES),
                 LocalDateTime.of(2022, 6, 1, 18, 36), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
-        assertEquals(50, manager.findEpicByID(epicTaskNum).getDuration(),
+        assertEquals( Duration.of((long) 50, ChronoUnit.MINUTES), manager.findEpicByID(epicTaskNum).getDuration(),
                 "Продолжительность эпика расчитана неправильно");
         assertEquals(LocalDateTime.of(2022, 5, 1, 0, 0)
                 , manager.findEpicByID(epicTaskNum).getStartTime(),

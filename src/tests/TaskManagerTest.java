@@ -10,7 +10,9 @@ import tasks.Status;
 import tasks.Subtask;
 import tasks.Task;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,10 +28,10 @@ class TaskManagerTest {
     @Test
     void getAllTasks() {
         Task task1 = new Task("Test getAllTasks", "Test getAllTasks description", Status.NEW,
-                 (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewTask(task1);
         Task task2 = new Task("Test getAllTasks2", "Test getAllTasks description2", Status.NEW,
-                 (long) 20, LocalDateTime.of(2022, 1, 2, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0));
         taskManager.addNewTask(task2);
         final Task[] tasks = new Task[] {task1, task2};
 
@@ -45,13 +47,13 @@ class TaskManagerTest {
     @Test
     void getAllSubtasks() {
         Epic epic1 = new Epic("Test getAllEpics", "Test getAllEpics description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Subtask subtask1 = new Subtask("Test getAllSubtasks", "Test getAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 2, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask1);
         Subtask subtask2 = new Subtask("Test getAllSubtasks2", "Test getAllSubtasks description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 3, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 3, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask2);
         final Subtask[] subtasks = new Subtask[] {subtask1, subtask2};
 
@@ -67,10 +69,10 @@ class TaskManagerTest {
     @Test
     void getAllEpics() {
         Epic epic1 = new Epic("Test getAllEpics", "Test getAllEpics description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Epic epic2 = new Epic("Test getAllEpics2", "Test getAllEpics description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 2, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0));
         taskManager.addNewEpic(epic2);
         final Epic[] epics = new Epic[] {epic1, epic2};
 
@@ -86,7 +88,7 @@ class TaskManagerTest {
     @Test
     void deleteAllTasks() {
         Task task1 = new Task("Test deleteAllTasks", "Test deleteAllTasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewTask(task1);
         taskManager.deleteAllTasks();
 
@@ -99,10 +101,10 @@ class TaskManagerTest {
     @Test
     void deleteAllSubtasks() {
         Epic epic1 = new Epic("Test deleteAllSubtasks", "Test deleteAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Subtask subtask1 = new Subtask("Test deleteAllSubtasks", "Test deleteAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask1);
         taskManager.deleteAllSubtasks();
 
@@ -115,10 +117,10 @@ class TaskManagerTest {
     @Test
     void deleteAllEpics() {
         Epic epic1 = new Epic("Test deleteAllSubtasks", "Test deleteAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Subtask subtask1 = new Subtask("Test deleteAllSubtasks", "Test deleteAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask1);
         taskManager.deleteAllEpics();
 
@@ -134,10 +136,10 @@ class TaskManagerTest {
     @Test
     void findTaskByID() {
         Task task1 = new Task("Test findTaskByID", "Test findTaskByID description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         int taskId = taskManager.addNewTask(task1);
         Task task2 = new Task("Test findTaskByID2", "Test findTaskByID description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 3, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 3, 1, 0, 0));
         taskManager.addNewTask(task2);
 
         final Task task = taskManager.findTaskByID(taskId);
@@ -154,13 +156,13 @@ class TaskManagerTest {
     @Test
     void findSubtaskByID() {
         Epic epic = new Epic("Test findSubtaskByID", "Test findSubtaskByID description for Epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Subtask subtask = new Subtask("Test findSubtaskByID", "Test findSubtaskByID description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
         final int subtaskId = taskManager.addNewSubtask(subtask);
         Subtask subtask2 = new Subtask("Test findSubtaskByID2", "Test findSubtaskByID description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 3, 1, 0, 0), epic.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 3, 1, 0, 0), epic.getId());
         taskManager.addNewSubtask(subtask2);
 
         final Subtask findedSubtask = taskManager.findSubtaskByID(subtaskId);
@@ -178,10 +180,10 @@ class TaskManagerTest {
     @Test
     void findEpicByID() {
         Epic epic = new Epic("Test findEpicByID", "Test findEpicByID description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 4, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 4, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Epic epic2 = new Epic("Test findEpicByID2", "Test findEpicByID description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 5, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 5, 1, 0, 0));
         taskManager.addNewEpic(epic2);
 
         final Epic findedEpic = taskManager.findEpicByID(epicId);
@@ -198,22 +200,22 @@ class TaskManagerTest {
     @Test
     void findEveryTaskByID() {
         Epic epic = new Epic("Test findEveryTaskByID", "Test findEveryTaskByID description for Epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 6, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 6, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Epic epic2 = new Epic("Test findEveryTaskByID2", "Test findEveryTaskByID description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 7, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 7, 1, 0, 0));
         taskManager.addNewEpic(epic2);
         Subtask subtask = new Subtask("Test findEveryTaskByID", "Test findEveryTaskByID description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 8, 1, 0, 0), epicId);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 8, 1, 0, 0), epicId);
         taskManager.addNewSubtask(subtask);
         Subtask subtask2 = new Subtask("Test findEveryTaskByID2", "Test findEveryTaskByID description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 9, 1, 0, 0), epic.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 9, 1, 0, 0), epic.getId());
         taskManager.addNewSubtask(subtask2);
         Task task1 = new Task("Test findEveryTaskByID", "Test findEveryTaskByID description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int taskId = taskManager.addNewTask(task1);
         Task task2 = new Task("Test findEveryTaskByID2", "Test findEveryTaskByID description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 2, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 0, 0));
         taskManager.addNewTask(task2);
 
         final Task findedSubtask = taskManager.findEveryTaskByID(taskId);
@@ -226,7 +228,7 @@ class TaskManagerTest {
     @Test
     void addNewTask() {
         Task task = new Task("Test addNewTask", "Test addNewTask description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int taskId = taskManager.addNewTask(task);
 
         final Task savedTask = taskManager.findTaskByID(taskId);
@@ -244,10 +246,10 @@ class TaskManagerTest {
     @Test
     void addNewSubtask() {
         Epic epic = new Epic("Test addNewSubtask", "Test addNewSubtask description for Epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Subtask subtask = new Subtask("Test addNewSubtask", "Test addNewSubtask description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
         final int subtaskId = taskManager.addNewSubtask(subtask);
 
         final Subtask savedSubtask = taskManager.findSubtaskByID(subtaskId);
@@ -265,7 +267,7 @@ class TaskManagerTest {
     @Test
     void addNewEpic() {
         Epic epic = new Epic("Test addNewEpic", "Test addNewEpic description", Status.NEW,
-                 (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
 
         final Epic savedEpic = taskManager.findEpicByID(epicId);
@@ -283,12 +285,12 @@ class TaskManagerTest {
     @Test
     void updateTask() {
         Task task = new Task("Test addNewTask", "Test addNewTask description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int taskId = taskManager.addNewTask(task);
 
         LocalDateTime newTime = LocalDateTime.of(2022, 3, 1, 0, 0);
         Task newTask = new Task("Test addNewTask", "Test addNewTask description", Status.NEW,
-                (long) 20, newTime);
+                Duration.of((long) 20, ChronoUnit.MINUTES), newTime);
 
         taskManager.updateTask(newTask, taskId);
 
@@ -302,15 +304,15 @@ class TaskManagerTest {
     @Test
     void updateSubtask() {
         Epic epic = new Epic("Test addNewSubtask", "Test addNewSubtask description for Epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW,  Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Subtask subtask = new Subtask("Test addNewSubtask", "Test addNewSubtask description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
         final int subtaskId = taskManager.addNewSubtask(subtask);
 
         LocalDateTime newTime = LocalDateTime.of(2022, 3, 1, 0, 0);
         Subtask newSubtask = new Subtask("Test addNewSubtask", "Test addNewSubtask description",
-                Status.NEW, (long) 20, newTime, epicId);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), newTime, epicId);
 
         taskManager.updateSubtask(newSubtask, subtaskId);
 
@@ -324,12 +326,12 @@ class TaskManagerTest {
     @Test
     void updateEpic() {
         Epic epic = new Epic("Test addNewSubtask", "Test addNewSubtask description for Epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
 
         LocalDateTime newTime = LocalDateTime.of(2022, 3, 1, 0, 0);
         Epic newEpic = new Epic("Test addNewSubtask", "Test addNewSubtask description for Epic",
-                Status.NEW, (long) 20, newTime);
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), newTime);
 
         taskManager.updateEpic(newEpic, epicId);
 
@@ -343,10 +345,10 @@ class TaskManagerTest {
     @Test
     void deleteTaskByNum() {
         Task task1 = new Task("Test deleteTaskByNum", "Test deleteTaskByNum description", Status.NEW,
-                 (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         int taskId = taskManager.addNewTask(task1);
         Task task2 = new Task("Test deleteTaskByNum2", "Test deleteTaskByNum description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewTask(task2);
 
         final Task savedTask = taskManager.findTaskByID(taskId);
@@ -363,15 +365,15 @@ class TaskManagerTest {
     @Test
     void deleteSubtaskByNum() {
         Epic epic = new Epic("Test deleteSubtaskByNum", "Tst deleteSubtaskByNum description for epic",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Subtask subtask1 = new Subtask("Test deleteSubtaskByNum",
                 "Test deleteSubtaskByNum description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 0, 0), epicId);
         int subtaskId = taskManager.addNewSubtask(subtask1);
         Subtask subtask2 = new Subtask("Test deleteSubtaskByNum",
                 "Test deleteSubtaskByNum description2", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 2, 3, 0, 0), epicId);
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 3, 0, 0), epicId);
         taskManager.addNewSubtask(subtask2);
 
         taskManager.deleteSubtaskByNum(subtaskId);
@@ -384,10 +386,10 @@ class TaskManagerTest {
     @Test
     void deleteEpicByNum() {
         Epic epic = new Epic("Test deleteEpicByNum", "Test deleteEpicByNum description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Epic epic2 = new Epic("Test deleteEpicByNum2", "Test deleteEpicByNum description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic2);
 
         taskManager.deleteEpicByNum(epicId);
@@ -400,13 +402,13 @@ class TaskManagerTest {
     @Test
     void getSubtasksFromEpic() {
         Epic epic1 = new Epic("Test getAllEpics", "Test getAllEpics description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Subtask subtask1 = new Subtask("Test getAllSubtasks", "Test getAllSubtasks description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 2, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask1);
         Subtask subtask2 = new Subtask("Test getAllSubtasks2", "Test getAllSubtasks description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 4, 0, 0), epic1.getId());
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 4, 0, 0), epic1.getId());
         taskManager.addNewSubtask(subtask2);
         final Subtask[] subtasks = new Subtask[] {subtask1, subtask2};
 
@@ -422,7 +424,7 @@ class TaskManagerTest {
     @Test
     void getNoSubtasksFromEpic() {
         Epic epic1 = new Epic("Test getAllEpics", "Test getAllEpics description",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
 
         final List<Subtask> subtasksInEpicList = taskManager.getSubtasksFromEpic(epic1.getId());
@@ -435,7 +437,7 @@ class TaskManagerTest {
     void history() {
         TaskManager taskManager1 = Managers.getDefault("input.csv");
         Task task1 = new Task("Test history", "Test history description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 2, 1, 4, 50));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 4, 50));
         int taskId = taskManager1.addNewTask(task1);
         taskManager1.findTaskByID(taskId);
         taskManager1.deleteEpicByNum(6);
@@ -455,7 +457,7 @@ class TaskManagerTest {
     @Test
     void taskDurationStartTimeAndEndTime() {
         Task task = new Task("Test addNewTask", "Test addNewTask description", Status.NEW,
-                (long) 20, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int taskId = taskManager.addNewTask(task);
 
         final Task savedTask = taskManager.findTaskByID(taskId);
@@ -466,7 +468,7 @@ class TaskManagerTest {
         final List<Task> tasks = taskManager.getAllTasks();
 
         assertNotNull(tasks, "Задачи на возвращаются.");
-        assertEquals(20, tasks.get(taskId).getDuration(), "Время исполнения установлено неправильно");
+        assertEquals( Duration.of((long) 20, ChronoUnit.MINUTES), tasks.get(taskId).getDuration(), "Время исполнения установлено неправильно");
         assertEquals(LocalDateTime.of(2022, 1, 1, 0, 0),
                 tasks.get(taskId).getStartTime(), "Время начала задачи установлено неправильно");
         assertEquals(LocalDateTime.of(2022, 1, 1, 0, 20),
@@ -476,16 +478,16 @@ class TaskManagerTest {
     @Test
     void subtaskDurationStartTimeAndEndTime() {
         Epic epic = new Epic("Test addNewSubtask", "Test addNewSubtask description for Epic",
-                Status.NEW, (long) 30, LocalDateTime.of(2022, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 30, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 1, 0, 0));
         final int epicId = taskManager.addNewEpic(epic);
         Subtask subtask = new Subtask("Test addNewSubtask", "Test addNewSubtask description",
-                Status.NEW, (long) 40, LocalDateTime.of(2022, 1, 2, 0, 0), epicId);
+                Status.NEW, Duration.of((long) 40, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0), epicId);
         final int subtaskId = taskManager.addNewSubtask(subtask);
 
         final List<Subtask> subtasks = taskManager.getAllSubtasks();
 
         assertNotNull(subtasks, "Подзадачи на возвращаются.");
-        assertEquals(40, subtasks.get(0).getDuration(),
+        assertEquals( Duration.of((long) 40, ChronoUnit.MINUTES), subtasks.get(0).getDuration(),
                 "Время исполнения установлено неправильно");
         assertEquals(LocalDateTime.of(2022, 1, 2, 0, 0),
                 taskManager.findSubtaskByID(subtaskId).getStartTime(), "Время начала задачи установлено неправильно");
@@ -497,23 +499,23 @@ class TaskManagerTest {
     void getPrioritizedTasksTest() {
         Task task1 = new Task("Test getPrioritizedTasksTest",
                 "Test getPrioritizedTasksTest description", Status.NEW,
-                (long) 20, LocalDateTime.of(2020, 6, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 6, 1, 0, 0));
         taskManager.addNewTask(task1);
         Task task2 = new Task("Test getPrioritizedTasksTest",
                 "Test getPrioritizedTasksTest description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2023, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2023, 1, 1, 0, 0));
         taskManager.addNewTask(task2);
         Task task3 = new Task("Test getPrioritizedTasksTest",
                 "Test getPrioritizedTasksTest description", Status.NEW,
-                (long) 20, LocalDateTime.of(2020, 5, 13, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 5, 13, 0, 0));
         taskManager.addNewTask(task3);
         Task task4 = new Task("Test getPrioritizedTasksTest",
                 "Test getPrioritizedTasksTest description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2020, 5, 11, 6, 3));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 5, 11, 6, 3));
         taskManager.addNewTask(task4);
         Task task5 = new Task("Test getPrioritizedTasksTest",
                 "Test getPrioritizedTasksTest description2",
-                Status.NEW, (long) 20, LocalDateTime.of(2020, 5, 11, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 5, 11, 0, 0));
         taskManager.addNewTask(task5);
         System.out.println(taskManager.getPrioritizedTasks());
         assertNotNull(taskManager.getPrioritizedTasks(), "Подзадачи на возвращаются.");
@@ -523,36 +525,36 @@ class TaskManagerTest {
     void validate() {
         Task task1 = new Task("Test validate",
                 "Test validate description", Status.NEW,
-                (long) 20, LocalDateTime.of(2020, 1, 1, 0, 0));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 1, 1, 0, 0));
         taskManager.addNewTask(task1);
         Task task2 = new Task("Test validate",
                 "Test validate description 2",
-                Status.NEW, (long) 20, LocalDateTime.of(2020, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 1, 1, 0, 0));
         taskManager.addNewTask(task2);
         Task task3 = new Task("Test validate",
                 "Test validate description 3", Status.NEW,
-                (long) 20, LocalDateTime.of(2020, 1, 1, 0, 19));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 1, 1, 0, 19));
         taskManager.addNewTask(task3);
 
         Epic epic1 = new Epic("Test validate", "Test validate description 4",
-                Status.NEW, (long) 20, LocalDateTime.of(2021, 1, 1, 0, 0));
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2021, 1, 1, 0, 0));
         taskManager.addNewEpic(epic1);
         Subtask subtask1 = new Subtask("Test validate", "Test validate description 5",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 2, 0, 0),
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 0),
                 epic1.getId());
         taskManager.addNewSubtask(subtask1);
         Subtask subtask2 = new Subtask("Test validate", "Test validate description 6",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 2, 0, 20),
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 20),
                 epic1.getId());
         taskManager.addNewSubtask(subtask2);
         Subtask subtask3 = new Subtask("Test validate", "Test validate description 7",
-                Status.NEW, (long) 20, LocalDateTime.of(2022, 1, 2, 0, 15),
+                Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 1, 2, 0, 15),
                 epic1.getId());
         taskManager.addNewSubtask(subtask3);
 
         Task task4 = new Task("Test validate",
                 "Test validate description 8", Status.NEW,
-                (long) 20, LocalDateTime.of(2021, 1, 1, 0, 1));
+                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2021, 1, 1, 0, 1));
         taskManager.addNewTask(task4);
 
         List<Task> tasks = taskManager.getAllTasks();

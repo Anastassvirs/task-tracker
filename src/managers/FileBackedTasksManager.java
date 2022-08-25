@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,18 +159,19 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
                 switch (splitLine[1]) {
                     case "TASK":
                         Task task = new Task(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
-                                status, Long.parseLong(splitLine[5]), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
+                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
                         task.setId(Integer.parseInt(splitLine[0]));
                         newManager.addOldTask(task);
                         break;
                     case "EPIC":
                         Epic epic = new Epic(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
-                                status, Long.parseLong(splitLine[5]), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
+                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
                         epic.setId(Integer.parseInt(splitLine[0]));
                         newManager.addOldEpic(epic);
                         break;
                     default:
-                        Subtask subtask = new Subtask(splitLine[2], splitLine[4], status, Long.parseLong(splitLine[5]),
+                        Subtask subtask = new Subtask(splitLine[2], splitLine[4], status,
+                                Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES),
                                 LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")),
                                 Integer.parseInt(splitLine[7].replaceAll("(\\r|\\n)", "")));
                         subtask.setId(Integer.parseInt(splitLine[0]));

@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -132,7 +134,7 @@ class FileBackedTasksManagerTest {
         taskManager.deleteAllEpics();
         String recoveryFile = Files.readString(Path.of(new File("output.csv").toString()));
         assertEquals(recoveryFile, "id,type,name,status,description,duration,startTime,epic\n" +
-                "1,TASK,task for tests,NEW,description,20,2022-01-01T10:15:30\n" +
+                "1,TASK,task for tests,NEW,description,PT20M,2022-01-01T10:15:30\n" +
                 "\n" +
                 "1,3", "Задачи сохраняются неправильно");
     }
@@ -141,7 +143,7 @@ class FileBackedTasksManagerTest {
     void isDurationAndStartTimeAndEndTimeOK() {
         assertNotNull(taskManager.findEpicByID(2), "Задача не найдена.");
         assertEquals(
-                23,
+                Duration.of((long) 23, ChronoUnit.MINUTES),
                 taskManager.findEpicByID(2).getDuration(),
                 "Длительность восстановлена из памяти неверно"
         );

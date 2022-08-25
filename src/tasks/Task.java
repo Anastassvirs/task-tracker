@@ -1,5 +1,6 @@
 package tasks;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Task implements Comparable<Task>{
@@ -7,11 +8,11 @@ public class Task implements Comparable<Task>{
     protected String description;
     protected Integer id;
     protected Status progressStatus; // Статус задачи (Новая / В процессе / Выполнена)
-    protected Long duration; // Продолжительность задачи, оценка того, сколько времени она займёт в минутах
+    protected Duration duration; // Продолжительность задачи, оценка того, сколько времени она займёт в минутах
     protected LocalDateTime startTime; // Дата, когда предполагается приступить к выполнению задачи
     protected LocalDateTime endTime; // Время завершения задачи, которое рассчитывается исходя из startTime и duration
 
-    public Task(String taskName, String description, Status progressStatus, Long duration, LocalDateTime startTime) {
+    public Task(String taskName, String description, Status progressStatus, Duration duration, LocalDateTime startTime) {
         this.taskName = taskName;
         this.description = description;
         this.progressStatus = progressStatus;
@@ -52,11 +53,11 @@ public class Task implements Comparable<Task>{
         this.id = id;
     }
 
-    public Long getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(Long duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -69,7 +70,7 @@ public class Task implements Comparable<Task>{
     }
 
     private void calculateEndTime() {
-        endTime = startTime.plusMinutes(duration);
+        endTime = startTime.plus(duration);
     }
 
     public LocalDateTime getEndTime() {

@@ -5,6 +5,7 @@ import tasks.Status;
 import tasks.Subtask;
 import tasks.Task;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -274,7 +275,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void updateEpicDurationAndEndTime(Epic epic) {
         LocalDateTime mostEarlyTaskStart = EARLIEST_TASK_START_TIME;
         LocalDateTime mostLateTaskEnd = LATEST_TASK_END_TIME;
-        Long newDuration = (long) 0;
+        Duration newDuration = Duration.ZERO;
         Epic newEpic = new Epic(epic.getTaskName(), epic.getDescription(), epic.getProgressStatus(), epic.getDuration(),
                 epic.getStartTime());
         newEpic.setId(epic.getId());
@@ -286,7 +287,7 @@ public class InMemoryTaskManager implements TaskManager {
                 mostLateTaskEnd = subtask.getEndTime();
             }
             newEpic.addSubtask(subtask);
-            newDuration += subtask.getDuration();
+            newDuration = newDuration.plus(subtask.getDuration());
         }
         newEpic.setDuration(newDuration);
         newEpic.setStartTime(mostEarlyTaskStart);

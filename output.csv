@@ -1,15 +1,11 @@
 id,type,name,status,description,duration,startTime,epic
 1,TASK,taskie daskie,NEW,funny and nice,20,2022-01-01T10:15:30
-7,TASK,task1,NEW,strong and serious,20,2022-01-01T00:00
-8,TASK,taskie daski,NEW,funny and nice,20,2022-02-01T00:00
 2,EPIC,ep2,NEW,cool epic doesn't need subtasks,20,2022-01-02T10:15:30
 3,EPIC,ep2,NEW,cool epic,20,2022-01-05T10:15:30
 6,EPIC,ep2,NEW,epic doesn't need subtasks,20,2022-01-04T10:15:30
-9,EPIC,ep1,NEW,usual epic you know,60,2022-04-01T00:00
-13,EPIC,ep2,NEW,cool epic doesn't need subtasks,20,2022-07-01T00:00
+7,EPIC,ep2,IN_PROGRESS,cool epic doesn't need subtasks,40,2022-02-01T00:00
 7,SUBTASK,sub3,NEW,subsubsub,20,2022-01-05T10:15:30,3
-10,SUBTASK,sub1,NEW,little subbie,20,2022-04-01T00:00,9
-11,SUBTASK,sub2,NEW,subsub,20,2022-05-01T00:00,9
-12,SUBTASK,sub3,NEW,subsubsub,20,2022-06-01T00:00,9
+8,SUBTASK,sub1,DONE,little subbie,20,2022-02-01T00:00,7
+9,SUBTASK,sub2,NEW,subsub,20,2022-02-01T00:21,7
 
-1,6,7,8,9,10,11,12
+1,6,7

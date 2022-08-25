@@ -1,9 +1,12 @@
-package tasks;
+package tests;
 
 import managers.Managers;
 import managers.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tasks.Epic;
+import tasks.Status;
+import tasks.Subtask;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +41,7 @@ class EpicTest {
                 LocalDateTime.of(2022, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
-        assertEquals(manager.findEpicByID(epicTaskNum).progressStatus, Status.NEW, "Статус эпика не NEW," +
+        assertEquals(manager.findEpicByID(epicTaskNum).getProgressStatus(), Status.NEW, "Статус эпика не NEW," +
                 " хотя все подзадачи имеют статус NEW");
     }
 
@@ -51,7 +54,7 @@ class EpicTest {
                 LocalDateTime.of(2022, 1, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
-        assertEquals(Status.DONE, manager.findEpicByID(epicTaskNum).progressStatus, "Статус эпика не DONE," +
+        assertEquals(Status.DONE, manager.findEpicByID(epicTaskNum).getProgressStatus(), "Статус эпика не DONE," +
                 " хотя все подзадачи имеют статус DONE");
     }
 
@@ -64,7 +67,7 @@ class EpicTest {
                 LocalDateTime.of(2022, 2, 1, 0, 21), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
-        assertEquals(Status.IN_PROGRESS, manager.findEpicByID(epicTaskNum).progressStatus, "Статус эпика не IN_PROGRESS," +
+        assertEquals(Status.IN_PROGRESS, manager.findEpicByID(epicTaskNum).getProgressStatus(), "Статус эпика не IN_PROGRESS," +
                 " хотя подзадачи имеют статусы DONE и NEW");
     }
 
@@ -77,7 +80,7 @@ class EpicTest {
                 LocalDateTime.of(2022, 3, 1, 0, 0), epicTaskNum);
         subtask = manager.addNewSubtask(subtaskSub);
         assertNotNull(manager.getAllEpics());
-        assertEquals(manager.findEpicByID(epicTaskNum).progressStatus, Status.IN_PROGRESS, "Статус эпика не IN_PROGRESS," +
+        assertEquals(manager.findEpicByID(epicTaskNum).getProgressStatus(), Status.IN_PROGRESS, "Статус эпика не IN_PROGRESS," +
                 " хотя все подзадачи имеют статус IN_PROGRESS");
     }
 

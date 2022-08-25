@@ -2,11 +2,10 @@ package tasks;
 
 import java.time.LocalDateTime;
 
-// Класс, описывающий все задачи
 public class Task implements Comparable<Task>{
-    protected String taskName; // Имя задачи
-    protected String description; // Описание задачи
-    protected Integer id; // Уникальный номер задачи
+    protected String taskName;
+    protected String description;
+    protected Integer id;
     protected Status progressStatus; // Статус задачи (Новая / В процессе / Выполнена)
     protected Long duration; // Продолжительность задачи, оценка того, сколько времени она займёт в минутах
     protected LocalDateTime startTime; // Дата, когда предполагается приступить к выполнению задачи

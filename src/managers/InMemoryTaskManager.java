@@ -12,9 +12,9 @@ import static java.time.Month.FEBRUARY;
 
 public class InMemoryTaskManager implements TaskManager {
     protected int numberOfTasks;
-    protected HashMap<Integer, Task> tasks; // Список обычных задач
-    protected HashMap<Integer, Subtask> subtasks; // Список всех подзадач
-    protected HashMap<Integer, Epic> epics; // Список эпиков
+    protected HashMap<Integer, Task> tasks;
+    protected HashMap<Integer, Subtask> subtasks;
+    protected HashMap<Integer, Epic> epics;
     protected HistoryManager historyManager;
     private TreeSet<Task> prioritizedTasks;
 

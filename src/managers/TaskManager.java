@@ -11,11 +11,11 @@ import java.util.TreeSet;
 public interface TaskManager {
     TreeSet<Task> getPrioritizedTasks();
 
-    ArrayList<Task> getAllTasks();
+    List<Task> getAllTasks();
 
-    ArrayList<Subtask> getAllSubtasks();
+    List<Subtask> getAllSubtasks();
 
-    ArrayList<Epic> getAllEpics();
+    List<Epic> getAllEpics();
 
     void deleteAllTasks();
 
@@ -23,33 +23,33 @@ public interface TaskManager {
 
     void deleteAllEpics();
 
-     Task findTaskByID(int ID);
+    Task findTaskByID(int ID);
 
-     Subtask findSubtaskByID(int ID);
+    Subtask findSubtaskByID(int ID);
 
-     Epic findEpicByID(int ID);
+    Epic findEpicByID(int ID);
 
-     Task findEveryTaskByID(int ID);
+    Task findEveryTaskByID(int ID);
 
-     Integer addNewTask(Task task);
+    Integer addNewTask(Task task);
 
-     Integer addNewSubtask(Subtask subtask);
+    Integer addNewSubtask(Subtask subtask);
 
-     Integer addNewEpic(Epic epic);
+    Integer addNewEpic(Epic epic);
 
-     Integer updateTask(Task task, Integer ID);
+    Integer updateTask(Task task, Integer ID);
 
-     Integer updateSubtask(Subtask subtask, Integer ID);
+    Integer updateSubtask(Subtask subtask, Integer ID);
 
-     Integer updateEpic(Epic epic, Integer ID);
+    Integer updateEpic(Epic epic, Integer ID);
 
-     void deleteTaskByNum(Integer ID);
+    void deleteTaskByNum(Integer ID);
 
-     void deleteSubtaskByNum(Integer ID);
+    void deleteSubtaskByNum(Integer ID);
 
-     void deleteEpicByNum(Integer ID);
+    void deleteEpicByNum(Integer ID);
 
-     ArrayList<Subtask> getSubtasksFromEpic(Integer numberOfEpic);
+    List<Subtask> getSubtasksFromEpic(Integer numberOfEpic);
 
-     List<Task> history();
+    List<Task> history();
 }

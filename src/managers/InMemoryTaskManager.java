@@ -39,7 +39,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Task> getAllTasks() {
+    public List<Task> getAllTasks() {
         ArrayList<Task> onlyTasks = new ArrayList<>();
         for(Task task : tasks.values()) {
             onlyTasks.add(task);
@@ -48,7 +48,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Subtask> getAllSubtasks() {
+    public List<Subtask> getAllSubtasks() {
         ArrayList<Subtask> onlySubtasks = new ArrayList<>();
         for(Subtask subtask : subtasks.values()) {
             onlySubtasks.add(subtask);
@@ -57,7 +57,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Epic> getAllEpics() {
+    public List<Epic> getAllEpics() {
         ArrayList<Epic> onlyEpics = new ArrayList<>();
         for(Epic epic : epics.values()) {
             onlyEpics.add(epic);
@@ -233,7 +233,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Subtask> getSubtasksFromEpic(Integer numberOfEpic) {
+    public List<Subtask> getSubtasksFromEpic(Integer numberOfEpic) {
         Epic epic = epics.get(numberOfEpic);
         ArrayList<Subtask> subtasks = new ArrayList<>();
 

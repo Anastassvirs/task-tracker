@@ -13,7 +13,7 @@ public class Epic extends Task {
     public boolean isAllSubtasksDone() {
         boolean isDone = true;
 
-        for (Subtask subtask: subtasks.values()) {
+        for (Subtask subtask : subtasks.values()) {
             if (subtask.getProgressStatus() != Status.DONE) {
                 isDone = false;
                 break;
@@ -25,7 +25,7 @@ public class Epic extends Task {
     public boolean isAllSubtasksNew() {
         boolean isNew = true;
 
-        for (Subtask subtask: subtasks.values()) {
+        for (Subtask subtask : subtasks.values()) {
             if (subtask.getProgressStatus() != Status.NEW) {
                 isNew = false;
                 break;

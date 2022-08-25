@@ -116,13 +116,13 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     private void save() {
         try (FileWriter fileWriter = new FileWriter(file.toString());) {
             fileWriter.write("id,type,name,status,description,duration,startTime,epic\n");
-            for (Task item: getAllTasks()) {
+            for (Task item : getAllTasks()) {
                 fileWriter.write(item.toString() + '\n');
             }
-            for (Epic item: getAllEpics()) {
+            for (Epic item : getAllEpics()) {
                 fileWriter.write(item.toString() + '\n');
             }
-            for (Subtask item: getAllSubtasks()) {
+            for (Subtask item : getAllSubtasks()) {
                 fileWriter.write(item.toString() + '\n');
             }
             fileWriter.write("\n");
@@ -177,7 +177,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             String line = split[split.length - 1];
             if (getHistoryFromString(line) != null) {
                 List<Integer> historyList = getHistoryFromString(line);
-                for (Integer item: historyList) {
+                for (Integer item : historyList) {
                     newManager.findEveryTaskByID(item);
                 }
             }

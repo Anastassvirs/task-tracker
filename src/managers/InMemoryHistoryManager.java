@@ -93,7 +93,7 @@ public class InMemoryHistoryManager implements HistoryManager {
     @Override
     public String toString() {
         String numbers = "";
-        for (Integer numb: numbersOfTasks.keySet()) {
+        for (Integer numb : numbersOfTasks.keySet()) {
             numbers += numb + ",";
         }
         if (numbers.length() >= 1) {

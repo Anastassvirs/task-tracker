@@ -11,6 +11,11 @@ import java.util.*;
 import static java.time.Month.FEBRUARY;
 
 public class InMemoryTaskManager implements TaskManager {
+    private static final LocalDateTime EARLIEST_TASK_START_TIME =
+            LocalDateTime.of(3000, FEBRUARY, 2, 22, 22);
+    private static final LocalDateTime LATEST_TASK_END_TIME =
+            LocalDateTime.of(1500, FEBRUARY, 2, 22, 22);
+
     protected int numberOfTasks;
     protected HashMap<Integer, Task> tasks;
     protected HashMap<Integer, Subtask> subtasks;
@@ -267,8 +272,8 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     public void updateEpicDurationAndEndTime(Epic epic) {
-        LocalDateTime mostEarlyTaskStart = LocalDateTime.of(3000, FEBRUARY, 2, 22, 22);
-        LocalDateTime mostLateTaskEnd = LocalDateTime.of(1500, FEBRUARY, 2, 22, 22);;
+        LocalDateTime mostEarlyTaskStart = EARLIEST_TASK_START_TIME;
+        LocalDateTime mostLateTaskEnd = LATEST_TASK_END_TIME;
         Long newDuration = (long) 0;
         Epic newEpic = new Epic(epic.getTaskName(), epic.getDescription(), epic.getProgressStatus(), epic.getDuration(),
                 epic.getStartTime());

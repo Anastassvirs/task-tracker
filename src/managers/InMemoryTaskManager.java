@@ -198,7 +198,9 @@ public class InMemoryTaskManager implements TaskManager {
     public void deleteTaskByNum(Integer ID) {
         try {
             historyManager.remove(ID);
-        } catch (NullPointerException e){}
+        } catch (NullPointerException ignored){
+            System.out.println("Задача для удаления не была найдена");
+        }
         prioritizedTasks.remove(tasks.remove(ID));
     }
 
@@ -206,7 +208,9 @@ public class InMemoryTaskManager implements TaskManager {
     public void deleteSubtaskByNum(Integer ID) {
         try {
             historyManager.remove(ID);
-        } catch (NullPointerException e){}
+        } catch (NullPointerException ignored){
+            System.out.println("Подзадача для удаления не была найдена");
+        }
         prioritizedTasks.remove(subtasks.remove(ID));
     }
 
@@ -214,7 +218,9 @@ public class InMemoryTaskManager implements TaskManager {
     public void deleteEpicByNum(Integer ID) {
         try {
             historyManager.remove(ID);
-        } catch (NullPointerException e){}
+        } catch (NullPointerException ignored){
+            System.out.println("Эпик для удаления не был найден");
+        }
         for (Subtask subtask : getSubtasksFromEpic(ID)) {
             deleteSubtaskByNum(subtask.getId());
         }

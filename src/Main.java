@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        TaskManager manager = Managers.getDefault("input.csv");
+        TaskManager manager = Managers.getDefault("src\\resources\\input.csv");
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());
@@ -59,7 +59,7 @@ public class Main {
         task = manager.findSubtaskByID(subtask2);
         System.out.println(manager.history());
 
-        manager = Managers.getDefault("output.csv");
+        manager = Managers.getDefault("src\\resources\\output.csv");
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());

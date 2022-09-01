@@ -138,7 +138,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
 
     public FileBackedTasksManager loadFromFile(File file) {
         try {
-            FileBackedTasksManager newManager = new FileBackedTasksManager(new File("output.csv"));
+            FileBackedTasksManager newManager = new FileBackedTasksManager(new File("src\\resources\\output.csv"));
             String recoveryFile = Files.readString(Path.of(file.toString()));
             String[] split = recoveryFile.split("\n");
             for (int i = 1; i < split.length - 2; i++) {
@@ -159,13 +159,15 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
                 switch (splitLine[1]) {
                     case "TASK":
                         Task task = new Task(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
-                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
+                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES),
+                                LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
                         task.setId(Integer.parseInt(splitLine[0]));
                         newManager.addOldTask(task);
                         break;
                     case "EPIC":
                         Epic epic = new Epic(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
-                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES), LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
+                                status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES),
+                                LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
                         epic.setId(Integer.parseInt(splitLine[0]));
                         newManager.addOldEpic(epic);
                         break;

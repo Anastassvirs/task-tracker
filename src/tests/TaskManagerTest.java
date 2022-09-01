@@ -435,7 +435,7 @@ class TaskManagerTest {
 
     @Test
     void history() {
-        TaskManager taskManager1 = Managers.getDefault("input.csv");
+        TaskManager taskManager1 = Managers.getDefault("src\\resources\\input.csv");
         Task task1 = new Task("Test history", "Test history description", Status.NEW,
                 Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 4, 50));
         int taskId = taskManager1.addNewTask(task1);

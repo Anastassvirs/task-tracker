@@ -22,7 +22,7 @@ class EpicTest {
 
     @BeforeEach
      void createSubtasks() {
-        manager = Managers.getDefault("input.csv");
+        manager = Managers.getDefault("src\\resources\\input.csv");
         epic = new Epic("ep2", "cool epic doesn't need subtasks", Status.NEW, Duration.ZERO,
                 LocalDateTime.of(2022, 1, 1, 0, 0));
         epicTaskNum = manager.addNewEpic(epic);

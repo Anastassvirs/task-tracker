@@ -24,14 +24,14 @@ class FileBackedTasksManagerTest {
 
     @BeforeEach
     void makeManager() {
-        FileBackedTasksManager manager = new FileBackedTasksManager(new File("output.csv"));
-        this.taskManager = manager.loadFromFile(new File("forTests.csv"));
+        FileBackedTasksManager manager = new FileBackedTasksManager(new File("src\\resources\\output.csv"));
+        this.taskManager = manager.loadFromFile(new File("src\\resources\\forTests.csv"));
     }
 
     @Test
     void noHistoryManager() {
-        FileBackedTasksManager taskManagerWithNoHistory = new FileBackedTasksManager(new File("output.csv"));
-        taskManagerWithNoHistory = taskManagerWithNoHistory.loadFromFile(new File("forTestsWithEmptyHistory.csv"));
+        FileBackedTasksManager taskManagerWithNoHistory = new FileBackedTasksManager(new File("src\\resources\\output.csv"));
+        taskManagerWithNoHistory = taskManagerWithNoHistory.loadFromFile(new File("src\\resources\\forTestsWithEmptyHistory.csv"));
 
         final List<Task> taskss = taskManagerWithNoHistory.history();
 
@@ -41,8 +41,8 @@ class FileBackedTasksManagerTest {
 
     @Test
     void noTasksManager() {
-        FileBackedTasksManager taskManagerWithNoHistory = new FileBackedTasksManager(new File("output.csv"));
-        taskManagerWithNoHistory = taskManagerWithNoHistory.loadFromFile(new File("forTestsWithNoTasks.csv"));
+        FileBackedTasksManager taskManagerWithNoHistory = new FileBackedTasksManager(new File("src\\resources\\output.csv"));
+        taskManagerWithNoHistory = taskManagerWithNoHistory.loadFromFile(new File("src\\resources\\forTestsWithNoTasks.csv"));
 
         final List<Task> history = taskManagerWithNoHistory.history();
         final List<Task> taskss = taskManagerWithNoHistory.history();
@@ -132,7 +132,7 @@ class FileBackedTasksManagerTest {
     @Test
     void save() throws IOException {
         taskManager.deleteAllEpics();
-        String recoveryFile = Files.readString(Path.of(new File("output.csv").toString()));
+        String recoveryFile = Files.readString(Path.of(new File("src\\resources\\output.csv").toString()));
         assertEquals(recoveryFile, "id,type,name,status,description,duration,startTime,epic\n" +
                 "1,TASK,task for tests,NEW,description,PT20M,2022-01-01T10:15:30\n" +
                 "\n" +

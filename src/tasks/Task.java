@@ -2,6 +2,7 @@ package tasks;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Task implements Comparable<Task>{
     protected String taskName;
@@ -82,8 +83,22 @@ public class Task implements Comparable<Task>{
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(taskName, task.taskName)
+                && Objects.equals(description, task.description)
+                && Objects.equals(id, task.id)
+                && progressStatus == task.progressStatus
+                && Objects.equals(duration, task.duration)
+                && Objects.equals(startTime, task.startTime)
+                && Objects.equals(endTime, task.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(taskName, description, id, progressStatus, duration, startTime, endTime);
     }
 
     @Override

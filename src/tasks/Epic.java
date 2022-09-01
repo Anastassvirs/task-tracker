@@ -2,6 +2,7 @@ package tasks;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Epic extends Task {
     private HashMap<Integer, Subtask> subtasks;
@@ -9,6 +10,20 @@ public class Epic extends Task {
     public Epic(String taskName, String description, Status progressStatus, Duration duration, LocalDateTime startTime) {
         super(taskName, description, progressStatus, duration, startTime);
         this.subtasks = new HashMap<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Epic epic = (Epic) o;
+        return Objects.equals(subtasks, epic.subtasks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), subtasks);
     }
 
     public boolean isAllSubtasksDone() {

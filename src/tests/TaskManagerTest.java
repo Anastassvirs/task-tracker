@@ -518,7 +518,7 @@ class TaskManagerTest {
                 Status.NEW, Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2020, 5, 11, 0, 0));
         taskManager.addNewTask(task5);
         System.out.println(taskManager.getPrioritizedTasks());
-        assertNotNull(taskManager.getPrioritizedTasks(), "Подзадачи на возвращаются.");
+        assertNotNull(taskManager.getPrioritizedTasks(), "Подзадачи не возвращаются.");
     }
 
     @Test

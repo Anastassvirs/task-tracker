@@ -76,6 +76,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         if (task.getId() > numberOfTasks) {
             numberOfTasks = task.getId() + 1;
         }
+        this.addToPriorityList(task);
         return task.getId();
     }
 
@@ -87,6 +88,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         epics.get(subtask.getNumberOfEpicTask()).addSubtask(subtask);
         updateEpicStatus(epics.get(subtask.getNumberOfEpicTask()));
         updateEpicDurationAndEndTime(epics.get(subtask.getNumberOfEpicTask()));
+        this.addToPriorityList(subtask);
         return subtask.getId();
     }
 
@@ -95,6 +97,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         if (epic.getId() > numberOfTasks) {
             numberOfTasks = epic.getId() + 1;
         }
+        this.addToPriorityList(epic);
         return epic.getId();
     }
 

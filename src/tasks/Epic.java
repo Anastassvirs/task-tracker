@@ -62,6 +62,10 @@ public class Epic extends Task {
         subtasks.put(ID, subtask);
     }
 
+    public void deleteSubtask(Integer ID) {
+        subtasks.remove(ID);
+    }
+
     @Override
     public String toString() {
         return id +

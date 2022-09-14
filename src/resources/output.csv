@@ -3,6 +3,5 @@ id,type,name,status,description,duration,startTime,epic
 2,EPIC,epictask,NEW,cool epic doesn't need subtasks,PT20M,2022-01-02T10:15:30
 3,EPIC,epic heheee,NEW,cool epic,PT20M,2022-01-05T10:15:30
 6,EPIC,ep,NEW,epic doesn't need subtasks,PT20M,2022-01-04T10:15:30
-7,SUBTASK,sub3,NEW,subsubsub,PT20M,2022-01-05T10:15:30,3
 
 1,6

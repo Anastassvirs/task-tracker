@@ -17,6 +17,8 @@ public interface TaskManager {
 
     List<Epic> getAllEpics();
 
+    void deleteAll();
+
     void deleteAllTasks();
 
     void deleteAllSubtasks();

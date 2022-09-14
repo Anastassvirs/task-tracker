@@ -213,7 +213,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTaskByNum(Integer ID) {
         try {
-            historyManager.remove(ID);
+            if (historyManager.getHistory().contains(tasks.get(ID))) {
+                historyManager.remove(ID);
+            }
             prioritizedTasks.remove(tasks.remove(ID));
         } catch (NullPointerException ignored){
             System.out.println("Задача для удаления не была найдена");
@@ -223,7 +225,9 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteSubtaskByNum(Integer ID) {
         try {
-            historyManager.remove(ID);
+            if (historyManager.getHistory().contains(subtasks.get(ID))) {
+                historyManager.remove(ID);
+            }
             epics.get(subtasks.get(ID).getNumberOfEpicTask()).deleteSubtask(ID);
             prioritizedTasks.remove(subtasks.remove(ID));
         } catch (NullPointerException ignored){
@@ -234,11 +238,13 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteEpicByNum(Integer ID) {
         try {
-            historyManager.remove(ID);
-            prioritizedTasks.remove(epics.remove(ID));
             for (Subtask subtask : getSubtasksFromEpic(ID)) {
                 deleteSubtaskByNum(subtask.getId());
             }
+            if (historyManager.getHistory().contains(epics.get(ID))) {
+                historyManager.remove(ID);
+            }
+            prioritizedTasks.remove(epics.remove(ID));
         } catch (NullPointerException ignored){
             System.out.println("Эпик для удаления не был найден");
         }

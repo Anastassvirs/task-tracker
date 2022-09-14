@@ -7,12 +7,19 @@ import com.sun.net.httpserver.HttpServer;
 import managers.Managers;
 import managers.TaskManager;
 import tasks.Epic;
+import tasks.Status;
 import tasks.Subtask;
 import tasks.Task;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -52,6 +59,28 @@ public class HttpTaskServer {
 
             switch(method) {
                 case "POST":
+                    if (fullpath.endsWith("/task")) {
+                        try {
+                            InputStream inputStream = httpExchange.getRequestBody();
+                            String body = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+                            Task task = gson.fromJson(body, Task.class);
+                            if (task.getId() != null) {
+                                manager.updateTask(task, task.getId());
+                            } else {
+                                manager.addNewTask(task);
+                            }
+                            httpExchange.sendResponseHeaders(200, 0);
+                            httpExchange.close();
+                        } catch (NullPointerException e) {
+                            System.out.println("Во время выполнения запроса возникла ошибка.\n" +
+                                    "Проверьте, пожалуйста, адрес и повторите попытку.");
+                            httpExchange.sendResponseHeaders(404, 0);
+                            httpExchange.close();
+                        }
+                    } else {
+                        httpExchange.sendResponseHeaders(404, 0);
+                        httpExchange.close();
+                    }
                     break;
                 case "GET":
                     if (fullpath.endsWith("/task")) {

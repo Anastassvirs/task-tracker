@@ -1,0 +1,1 @@
+{"taskName":"Test validate","description":"Test validate description","progressStatus":"NEW","duration":{"seconds":1200,"nanos":0},"startTime":{"date":{"year":2020,"month":1,"day":1},"time":{"hour":0,"minute":0,"second":0,"nano":0}},"endTime":{"date":{"year":2020,"month":1,"day":1},"time":{"hour":0,"minute":20,"second":0,"nano":0}}}

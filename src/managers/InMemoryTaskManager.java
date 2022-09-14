@@ -139,9 +139,9 @@ public class InMemoryTaskManager implements TaskManager {
             System.out.println("Невозможно добавить задачу, так как выбранный диапазон уже занят");
             return 0;
         } else {
+            numberOfTasks++;
             task.setId(numberOfTasks);
             tasks.put(numberOfTasks, task);
-            numberOfTasks++;
             prioritizedTasks.add(task);
             return task.getId();
         }

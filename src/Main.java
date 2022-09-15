@@ -62,7 +62,7 @@ public class Main {
         task = manager.findSubtaskByID(subtask2);
         System.out.println(manager.history());
 
-        //manager = Managers.getDefault();
+        manager = Managers.getDefaultWithLoad();
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());

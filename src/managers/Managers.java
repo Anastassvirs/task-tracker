@@ -14,6 +14,11 @@ public abstract class Managers {
         return manager;
     }
 
+    public static HTTPTaskManager getDefaultWithLoad() {
+        HTTPTaskManager manager = new HTTPTaskManager(8078, true);
+        return manager;
+    }
+
     public static HistoryManager getDefaultHistory() {
         return new InMemoryHistoryManager();
     }

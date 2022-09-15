@@ -1,8 +1,7 @@
 id,type,name,status,description,duration,startTime,epic
-1,TASK,taskie daskie,NEW,funny and nice,PT20M,2022-01-01T10:15:30
-2,EPIC,epictask,NEW,cool epic doesn't need subtasks,PT20M,2022-01-02T10:15:30
-3,EPIC,epic heheee,NEW,cool epic,PT20M,2022-01-05T10:15:30
-6,EPIC,ep,NEW,epic doesn't need subtasks,PT20M,2022-01-04T10:15:30
-7,SUBTASK,sub3,NEW,subsubsub,PT20M,2022-01-05T10:15:30,3
+1,TASK,task for tests,NEW,description,PT20M,2022-01-01T10:15:30
+2,EPIC,epic for tests,NEW,epic description for test,PT23M,2022-01-02T11:15:30
+3,EPIC,empty epic for tests,NEW,epic descr,PT22M,2022-01-03T10:25:30
+4,SUBTASK,subtask for tests,NEW,sub disc for tests,PT23M,2022-01-02T11:15:30,2
 
-1,6,7
+1,3

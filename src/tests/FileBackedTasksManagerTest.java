@@ -45,9 +45,9 @@ class FileBackedTasksManagerTest {
         taskManagerWithNoHistory = taskManagerWithNoHistory.loadFromFile(new File("src\\resources\\forTestsWithNoTasks.csv"));
 
         final List<Task> history = taskManagerWithNoHistory.history();
-        final List<Task> taskss = taskManagerWithNoHistory.history();
-        final List<Task> subtaskss = taskManagerWithNoHistory.history();
-        final List<Task> epicss = taskManagerWithNoHistory.history();
+        final List<Task> taskss = taskManagerWithNoHistory.getAllTasks();
+        final List<Subtask> subtaskss = taskManagerWithNoHistory.getAllSubtasks();
+        final List<Epic> epicss = taskManagerWithNoHistory.getAllEpics();
 
         assertNotNull(history, "Задачи из истории не возвращаются.");
         assertEquals(0, history.size(), "Неверное количество задач в истории.");

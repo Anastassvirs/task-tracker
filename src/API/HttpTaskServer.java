@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import managers.HTTPTaskManager;
 import managers.Managers;
-import managers.TaskManager;
 import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
@@ -22,7 +22,7 @@ public class HttpTaskServer {
     private static final int PORT = 8080;
     private static Gson gson;
     private static HttpServer server;
-    private static TaskManager manager;
+    private static HTTPTaskManager manager;
     private static String fullpath;
 
     public static void main(String[] args) throws IOException {
@@ -31,9 +31,9 @@ public class HttpTaskServer {
     }
 
     public HttpTaskServer() throws IOException {
-        this(Managers.getDefault("src\\resources\\input.csv"));
+        this(Managers.getDefault());
     }
-    public HttpTaskServer(TaskManager manager) throws IOException {
+    public HttpTaskServer(HTTPTaskManager manager) throws IOException {
         this.manager = manager;
 
         gson = new Gson();
@@ -279,6 +279,7 @@ public class HttpTaskServer {
     private static void getTaskByID(HttpExchange httpExchange, Integer id) throws IOException {
         try {
             if (id != -1) {
+                System.out.println("what...");
                 Task task = manager.findTaskByID(id);
                 final String response = gson.toJson(task);
                 httpExchange.sendResponseHeaders(200, 0);

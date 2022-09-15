@@ -9,6 +9,11 @@ public abstract class Managers {
         return manager.loadFromFile(new File(path));
     }
 
+    public static HTTPTaskManager getDefault() {
+        HTTPTaskManager manager = new HTTPTaskManager(8078);
+        return manager;
+    }
+
     public static HistoryManager getDefaultHistory() {
         return new InMemoryHistoryManager();
     }

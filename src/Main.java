@@ -1,3 +1,5 @@
+import API.KVServer;
+import managers.HTTPTaskManager;
 import managers.Managers;
 import managers.TaskManager;
 import tasks.Epic;
@@ -12,7 +14,8 @@ import java.time.temporal.ChronoUnit;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        TaskManager manager = Managers.getDefault("src\\resources\\input.csv");
+        new KVServer().start();
+        HTTPTaskManager manager = Managers.getDefault();
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());
@@ -59,7 +62,7 @@ public class Main {
         task = manager.findSubtaskByID(subtask2);
         System.out.println(manager.history());
 
-        manager = Managers.getDefault("src\\resources\\output.csv");
+        //manager = Managers.getDefault();
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());

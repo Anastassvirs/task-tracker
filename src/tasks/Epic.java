@@ -10,6 +10,7 @@ public class Epic extends Task {
     public Epic(String taskName, String description, Status progressStatus, Duration duration, LocalDateTime startTime) {
         super(taskName, description, progressStatus, duration, startTime);
         this.subtasks = new HashMap<>();
+        this.taskType = Types.EPIC;
     }
 
     @Override

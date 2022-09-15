@@ -22,7 +22,7 @@ public class InMemoryTaskManager implements TaskManager {
     protected HashMap<Integer, Subtask> subtasks;
     protected HashMap<Integer, Epic> epics;
     protected HistoryManager historyManager;
-    private TreeSet<Task> prioritizedTasks;
+    protected TreeSet<Task> prioritizedTasks;
 
 
     public InMemoryTaskManager() {

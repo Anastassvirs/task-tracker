@@ -3,6 +3,7 @@ package API;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +11,16 @@ import java.util.Map;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
-/**
- * Постман: https://www.getpostman.com/collections/a83b61d9e1c81c10575c
- */
 public class KVServer {
     public static final int PORT = 8078;
     private final String apiToken;
     private final HttpServer server;
     private final Map<String, String> data = new HashMap<>();
+
+    public static void main(String[] args) throws IOException {
+        KVServer server = new KVServer();
+        server.start();
+    }
 
     public KVServer() throws IOException {
         apiToken = generateApiToken();
@@ -27,8 +30,24 @@ public class KVServer {
         server.createContext("/load", this::load);
     }
 
-    private void load(HttpExchange h) {
-        // TODO Добавьте получение значения по ключу
+    private void load(HttpExchange h) throws IOException {
+        try {
+            System.out.println("\n/load");
+            if ("GET".equals(h.getRequestMethod())) {
+                String key = h.getRequestURI().getPath().substring("/save/".length());
+                String value = data.get(key);
+                System.out.println("Значение для ключа " + key + " = " + value);
+                h.sendResponseHeaders(200, 0);
+                try (OutputStream os = h.getResponseBody()) {
+                    os.write(value.getBytes());
+                }
+            } else {
+                System.out.println("/register ждёт GET-запрос, а получил " + h.getRequestMethod());
+                h.sendResponseHeaders(405, 0);
+            }
+        } finally {
+            h.close();
+        }
     }
 
     private void save(HttpExchange h) throws IOException {

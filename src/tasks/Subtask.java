@@ -10,6 +10,7 @@ public class Subtask extends Task {
     public Subtask(String taskName, String description, Status progressStatus, Duration duration, LocalDateTime startTime, Integer numberOfEpicTask) {
         super(taskName, description, progressStatus, duration, startTime);
         this.numberOfEpicTask = numberOfEpicTask;
+        this.taskType = Types.SUBTASK;
     }
 
     @Override

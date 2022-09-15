@@ -12,6 +12,7 @@ public class Task implements Comparable<Task>{
     protected Duration duration; // Продолжительность задачи, оценка того, сколько времени она займёт в минутах
     protected LocalDateTime startTime; // Дата, когда предполагается приступить к выполнению задачи
     protected LocalDateTime endTime; // Время завершения задачи, которое рассчитывается исходя из startTime и duration
+    protected Types taskType;
 
     public Task(String taskName, String description, Status progressStatus, Duration duration, LocalDateTime startTime) {
         this.taskName = taskName;
@@ -19,7 +20,12 @@ public class Task implements Comparable<Task>{
         this.progressStatus = progressStatus;
         this.duration = duration;
         this.startTime = startTime;
+        this.taskType = Types.TASK;
         calculateEndTime();
+    }
+
+    public Types getTaskType() {
+        return taskType;
     }
 
     public String getTaskName() {

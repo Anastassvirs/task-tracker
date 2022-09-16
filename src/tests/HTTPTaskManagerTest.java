@@ -1,6 +1,6 @@
 package tests;
 
-import API.KVServer;
+import api.KVServer;
 import managers.HTTPTaskManager;
 import managers.Managers;
 import org.junit.jupiter.api.AfterEach;

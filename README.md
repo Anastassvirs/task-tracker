@@ -31,10 +31,10 @@ public class Main {
 * Класс для вызова менеджеров:
   * managers.Managers.java
 * 2 класса-сервера
-  * API.HttpTaskServer.java
-  * API.KVServer.java
+  * api.HttpTaskServer.java
+  * api.KVServer.java
 * класс-клиент
-  * API.KVTaskClient.java
+  * api.KVTaskClient.java
 * 5 тест-классов
     * tests.EpicTest.java
     * tests.FileBackedTasksManagerTest.java

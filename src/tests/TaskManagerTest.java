@@ -437,11 +437,13 @@ class TaskManagerTest {
     void history() {
         TaskManager taskManager1 = Managers.getDefault("src\\resources\\input.csv");
         Task task1 = new Task("Test history", "Test history description", Status.NEW,
-                Duration.of((long) 20, ChronoUnit.MINUTES), LocalDateTime.of(2022, 2, 1, 4, 50));
+                Duration.of((long) 20, ChronoUnit.MINUTES),
+                LocalDateTime.of(2022, 2, 1, 4, 50));
         int taskId = taskManager1.addNewTask(task1);
         taskManager1.findTaskByID(taskId);
         taskManager1.deleteEpicByNum(6);
         taskManager1.deleteTaskByNum(1);
+        taskManager1.deleteSubtaskByNum(7);
         List<Task> historyTasksList = taskManager1.history();
         Task[] historyTasks = new Task[] {task1};
         Task[] newHistoryTasks = new Task[1];
@@ -468,11 +470,11 @@ class TaskManagerTest {
         final List<Task> tasks = taskManager.getAllTasks();
 
         assertNotNull(tasks, "Задачи на возвращаются.");
-        assertEquals( Duration.of((long) 20, ChronoUnit.MINUTES), tasks.get(taskId).getDuration(), "Время исполнения установлено неправильно");
+        assertEquals( Duration.of((long) 20, ChronoUnit.MINUTES), tasks.get(taskId - 1).getDuration(), "Время исполнения установлено неправильно");
         assertEquals(LocalDateTime.of(2022, 1, 1, 0, 0),
-                tasks.get(taskId).getStartTime(), "Время начала задачи установлено неправильно");
+                tasks.get(taskId - 1).getStartTime(), "Время начала задачи установлено неправильно");
         assertEquals(LocalDateTime.of(2022, 1, 1, 0, 20),
-                tasks.get(taskId).getEndTime(), "Время окончания задачи расчитано неправильно");
+                tasks.get(taskId - 1).getEndTime(), "Время окончания задачи расчитано неправильно");
     }
 
     @Test

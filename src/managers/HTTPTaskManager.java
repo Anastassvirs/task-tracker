@@ -1,6 +1,6 @@
 package managers;
 
-import API.KVTaskClient;
+import api.KVTaskClient;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import tasks.Epic;

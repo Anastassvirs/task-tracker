@@ -1,10 +1,7 @@
 package managers;
 
 import exceptions.ManagerSaveException;
-import tasks.Epic;
-import tasks.Status;
-import tasks.Subtask;
-import tasks.Task;
+import tasks.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -145,28 +142,19 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             String[] split = recoveryFile.split("\n");
             for (int i = 1; i < split.length - 2; i++) {
                 String line = split[i];
-                Status status;
                 String[] splitLine = line.split(",");
+                Status status = Status.valueOf(splitLine[3]);
+                Types type = Types.valueOf(splitLine[1]);
 
-                switch (split[3]) {
-                    case "IN_PROGRESS":
-                        status = Status.IN_PROGRESS;
-                        break;
-                    case "DONE":
-                        status = Status.DONE;
-                        break;
-                    default:
-                        status = Status.NEW;
-                }
-                switch (splitLine[1]) {
-                    case "TASK":
+                switch (type) {
+                    case TASK:
                         Task task = new Task(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
                                 status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES),
                                 LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));
                         task.setId(Integer.parseInt(splitLine[0]));
                         newManager.addOldTask(task);
                         break;
-                    case "EPIC":
+                    case EPIC:
                         Epic epic = new Epic(splitLine[2], splitLine[4].replaceAll("(\\r|\\n)", ""),
                                 status, Duration.of(Long.parseLong(splitLine[5]), ChronoUnit.MINUTES),
                                 LocalDateTime.parse(splitLine[6].replaceAll("(\\r|\\n)", "")));

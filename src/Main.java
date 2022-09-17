@@ -17,7 +17,8 @@ import java.time.temporal.ChronoUnit;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        new KVServer().start();
+        KVServer server = new KVServer();
+        server.start();
         HTTPTaskManager manager = Managers.getDefault();
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
@@ -70,6 +71,8 @@ public class Main {
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());
 
+        server.stop();
+
         HttpTaskServer taskserver = new HttpTaskServer();
         HttpClient client = HttpClient.newHttpClient();
         URI url = URI.create("http://localhost:8080/tasks/task");
@@ -77,5 +80,6 @@ public class Main {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println(response);
+        taskserver.stopServer();
     }
 }

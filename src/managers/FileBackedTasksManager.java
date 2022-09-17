@@ -133,9 +133,8 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             }
             fileWriter.write("\n");
             fileWriter.write(getNumbsFromHistory());
-        } catch (IOException exp) {
-            System.out.println("Произошла ошибка во время записи файла.");
-
+        } catch (IOException e) {
+            System.out.println("Произошла ошибка во время записи файла: " + e.getMessage());
         }
     }
 
@@ -191,8 +190,8 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
                 }
             }
             return newManager;
-        } catch (IOException exp){
-            throw new ManagerSaveException("wow..exeption");
+        } catch (IOException e){
+            throw new ManagerSaveException("Произошла ошибка во время сохранения файла: " + e.getMessage());
         }
     }
 

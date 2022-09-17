@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class HTTPTaskManager extends FileBackedTasksManager{
+public class HTTPTaskManager extends FileBackedTasksManager {
     private final Gson gson;
     private final KVTaskClient client;
 
@@ -31,27 +31,31 @@ public class HTTPTaskManager extends FileBackedTasksManager{
 
     protected void load() {
         ArrayList<Task> tasks = gson.fromJson(client.load("tasks"),
-                new TypeToken<ArrayList<Task>>() {}.getType());
+                new TypeToken<ArrayList<Task>>() {
+                }.getType());
         addTasks(tasks);
 
         ArrayList<Subtask> subtasks = gson.fromJson(client.load("subtasks"),
-                new TypeToken<ArrayList<Subtask>>() {}.getType());
+                new TypeToken<ArrayList<Subtask>>() {
+                }.getType());
         addTasks(subtasks);
 
         ArrayList<Epic> epics = gson.fromJson(client.load("epics"),
-                new TypeToken<ArrayList<Epic>>() {}.getType());
+                new TypeToken<ArrayList<Epic>>() {
+                }.getType());
         addTasks(epics);
 
         List<Integer> history = gson.fromJson(client.load("history"),
-                new TypeToken<ArrayList<Integer>>() {}.getType());
+                new TypeToken<ArrayList<Integer>>() {
+                }.getType());
 
-        for (Integer taskId: history) {
+        for (Integer taskId : history) {
             historyManager.add(findEveryTaskByID(taskId));
         }
     }
 
     protected void addTasks(List<? extends Task> tasks) {
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             final int id = task.getId();
             if (id > numberOfTasks) {
                 numberOfTasks = id;
@@ -81,7 +85,9 @@ public class HTTPTaskManager extends FileBackedTasksManager{
         client.put("epics", jsonEpics);
 
         String jsonHistory =
-                gson.toJson(historyManager.getHistory().stream().map(Task::getId).collect(Collectors.toList()));
+                gson.toJson(historyManager.getHistory().stream()
+                        .map(Task::getId)
+                        .collect(Collectors.toList()));
         client.put("history", jsonHistory);
     }
 }

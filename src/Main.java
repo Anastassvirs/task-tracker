@@ -1,3 +1,4 @@
+import api.HttpTaskServer;
 import api.KVServer;
 import managers.HTTPTaskManager;
 import managers.Managers;
@@ -6,6 +7,11 @@ import tasks.Status;
 import tasks.Subtask;
 import tasks.Task;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -64,5 +70,13 @@ public class Main {
         System.out.println('\n' + "Список обычных задач: " + manager.getAllTasks());
         System.out.println("Список эпиков: " + manager.getAllEpics());
         System.out.println("Список подзадач: " + manager.getAllSubtasks());
+
+        HttpTaskServer taskserver = new HttpTaskServer();
+        HttpClient client = HttpClient.newHttpClient();
+        URI url = URI.create("http://localhost:8080/tasks/task");
+        HttpRequest request = HttpRequest.newBuilder().uri(url).GET().build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println(response);
     }
 }

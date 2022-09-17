@@ -19,119 +19,138 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class HttpTaskServer {
+    private static final String HTTP_GET = "GET";
+    private static final String HTTP_POST = "POST";
+    private static final String HTTP_DELETE = "DELETE";
+    private static final String CONTEXT = "/tasks";
+    private static final String TASK_PATH = "/task";
+    private static final String SUBTASK_PATH = "/subtask";
+    private static final String EPIC_PATH = "/epic";
+    private static final String ANYTASK_PATH = "/anytask";
+    private static final String ID_PATH = "/\\?id=";
     private static final int PORT = 8080;
     private static Gson gson;
     private static HttpServer server;
     private static HTTPTaskManager manager;
     private static String fullpath;
 
-    public static void main(String[] args) throws IOException {
-        HttpTaskServer taskserver = new HttpTaskServer();
-        server.start();
-    }
-
     public HttpTaskServer() throws IOException {
         this(Managers.getDefault());
     }
+
     public HttpTaskServer(HTTPTaskManager manager) throws IOException {
         this.manager = manager;
 
         gson = new Gson();
         server = HttpServer.create();
         server.bind(new InetSocketAddress(PORT), 0);
-        server.createContext("/tasks", new TaskHandler());
+        server.createContext(CONTEXT, new TaskHandler());
+        server.start();
+    }
+
+    public void stopServer() {
+        server.stop(0);
     }
 
     static class TaskHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
             fullpath = "";
-            String StringPostId = "";
-            int postId = 0;
 
             String method = httpExchange.getRequestMethod();
             fullpath = httpExchange.getRequestURI().toString();
 
             switch(method) {
-                case "POST":
-                    if (fullpath.endsWith("/task")) {
-                        postTask(httpExchange);
-                    } if (fullpath.endsWith("/subtask")) {
-                        postSubtask(httpExchange);
-                    } if (fullpath.endsWith("/epic")) {
-                        postEpic(httpExchange);
-                    } else {
-                            httpExchange.sendResponseHeaders(404, 0);
-                            httpExchange.close();
-                    }
-                        break;
-                case "GET":
-                    if (fullpath.endsWith("/task")) {
-                        getAllTasks(httpExchange);
-                    } else if (fullpath.endsWith("/subtask")) {
-                        getAllSubtasks(httpExchange);
-                    } else if (fullpath.endsWith("/epic")) {
-                        getAllEpics(httpExchange);
-                    } else if (fullpath.endsWith("/tasks/")) {
-                        getAllSortedTasks(httpExchange);
-                    } else if (fullpath.endsWith("/history")) {
-                        getHistory(httpExchange);
-                    } else if (Pattern.matches("^/tasks/task/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/task/\\?id=", "");
-                        int id = parsePathID(idString);
-                        getTaskByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/subtask/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/subtask/\\?id=", "");
-                        int id = parsePathID(idString);
-                        getSubtaskByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/epic/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/epic/\\?id=", "");
-                        int id = parsePathID(idString);
-                        getEpicByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/anytask/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/anytask/\\?id=", "");
-                        int id = parsePathID(idString);
-                        getAnyTaskByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/subtask/epic/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/subtask/epic/\\?id=", "");
-                        int id = parsePathID(idString);
-                        getSubtasksFromEpic(httpExchange, id);
-                    } else {
-                        httpExchange.sendResponseHeaders(404, 0);
-                        httpExchange.close();
-                    }
+                case HTTP_POST:
+                    postRequests(httpExchange);
                     break;
-                case "DELETE":
-                    System.out.println();
-                    if (fullpath.endsWith("/task/")) {
-                        deleteAllTasks(httpExchange);
-                    } else if (fullpath.endsWith("/subtask/")) {
-                        deleteAllSubtasks(httpExchange);
-                    } else if (fullpath.endsWith("/epic/")) {
-                        deleteAllEpics(httpExchange);
-                    } else if (fullpath.endsWith("/alltasks/")) {
-                        deleteAllTasksEpicsAndSubtasks(httpExchange);
-                    } else if (Pattern.matches("^/tasks/task/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/task/\\?id=", "");
-                        int id = parsePathID(idString);
-                        deleteTaskByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/subtask/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/subtask/\\?id=", "");
-                        int id = parsePathID(idString);
-                        deleteSubtaskByID(httpExchange, id);
-                    } else if (Pattern.matches("^/tasks/epic/\\?id=\\d+$", fullpath)) {
-                        String idString = fullpath.replaceFirst("/tasks/epic/\\?id=", "");
-                        int id = parsePathID(idString);
-                        deleteEpicByID(httpExchange, id);
-                    } else {
-                        httpExchange.sendResponseHeaders(404, 0);
-                        httpExchange.close();
-                    }
+                case HTTP_GET:
+                    getRequests(httpExchange);
+                    break;
+                case HTTP_DELETE:
+                    deleteRequests(httpExchange);
                     break;
                 default:
                     System.out.println("Некорректный метод!");
                     break;
             }
+        }
+    }
+
+    private static void postRequests(HttpExchange httpExchange) throws IOException {
+        if (fullpath.endsWith(TASK_PATH)) {
+            postTask(httpExchange);
+        } if (fullpath.endsWith(SUBTASK_PATH)) {
+            postSubtask(httpExchange);
+        } if (fullpath.endsWith(EPIC_PATH)) {
+            postEpic(httpExchange);
+        } else {
+            httpExchange.sendResponseHeaders(404, 0);
+            httpExchange.close();
+        }
+    }
+
+    private static void getRequests(HttpExchange httpExchange) throws IOException {
+        if (fullpath.endsWith(TASK_PATH)) {
+            getAllTasks(httpExchange);
+        } else if (fullpath.endsWith(SUBTASK_PATH)) {
+            getAllSubtasks(httpExchange);
+        } else if (fullpath.endsWith(EPIC_PATH)) {
+            getAllEpics(httpExchange);
+        } else if (fullpath.endsWith(CONTEXT + "/")) {
+            getAllSortedTasks(httpExchange);
+        } else if (fullpath.endsWith("/history")) {
+            getHistory(httpExchange);
+        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            getTaskByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            getSubtaskByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            getEpicByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + ANYTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + ANYTASK_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            getAnyTaskByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            getSubtasksFromEpic(httpExchange, id);
+        } else {
+            httpExchange.sendResponseHeaders(404, 0);
+            httpExchange.close();
+        }
+    }
+
+    private static void deleteRequests(HttpExchange httpExchange) throws IOException {
+        if (fullpath.endsWith(TASK_PATH + "/")) {
+            deleteAllTasks(httpExchange);
+        } else if (fullpath.endsWith(SUBTASK_PATH + "/")) {
+            deleteAllSubtasks(httpExchange);
+        } else if (fullpath.endsWith(EPIC_PATH + "/")) {
+            deleteAllEpics(httpExchange);
+        } else if (fullpath.endsWith(ANYTASK_PATH + "/")) {
+            deleteAllTasksEpicsAndSubtasks(httpExchange);
+        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            deleteTaskByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            deleteSubtaskByID(httpExchange, id);
+        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
+            String idString = fullpath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
+            int id = parsePathID(idString);
+            deleteEpicByID(httpExchange, id);
+        } else {
+            httpExchange.sendResponseHeaders(404, 0);
+            httpExchange.close();
         }
     }
 

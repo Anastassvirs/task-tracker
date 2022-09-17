@@ -26,11 +26,11 @@ public class KVTaskClient {
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                throw new ManagerSaveException("Ошибка в запросе на сохранение");
+                throw new ManagerSaveException("Ошибка в запросе на сохранение. Код ответа: " + response.statusCode());
             }
             return response.body().toString();
         } catch (IOException | InterruptedException e) {
-            throw new ManagerSaveException("Ошибка в запросе на сохранение");
+            throw new ManagerSaveException("Ошибка в запросе на сохранение.\n" + e.getMessage());
         }
     }
 
@@ -43,10 +43,10 @@ public class KVTaskClient {
                     .build();
             HttpResponse<Void> response = client.send(request, HttpResponse.BodyHandlers.discarding());
             if (response.statusCode() != 200) {
-                throw new ManagerSaveException("Ошибка в запросе на сохранение");
+                throw new ManagerSaveException("Ошибка в запросе на сохранение. Код ответа: " + response.statusCode());
             }
         } catch (IOException | InterruptedException e) {
-            throw new ManagerSaveException("Ошибка в запросе на сохранение");
+            throw new ManagerSaveException("Ошибка в запросе на сохранение.\n" + e.getMessage());
         }
     }
 
@@ -59,11 +59,11 @@ public class KVTaskClient {
                     .build();
             HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                throw new ManagerSaveException("Ошибка в запросе на сохранение");
+                throw new ManagerSaveException("Ошибка в запросе на сохранение. Код ответа: " + response.statusCode());
             }
             return response.body().toString();
         } catch (IOException | InterruptedException e) {
-            throw new ManagerSaveException("Ошибка в запросе на сохранение");
+            throw new ManagerSaveException("Ошибка в запросе на сохранение.\n" + e.getMessage());
         }
     }
 }

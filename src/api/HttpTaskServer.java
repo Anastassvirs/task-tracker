@@ -298,7 +298,6 @@ public class HttpTaskServer {
     private static void getTaskByID(HttpExchange httpExchange, Integer id) throws IOException {
         try {
             if (id != -1) {
-                System.out.println("what...");
                 Task task = manager.findTaskByID(id);
                 final String response = gson.toJson(task);
                 httpExchange.sendResponseHeaders(200, 0);

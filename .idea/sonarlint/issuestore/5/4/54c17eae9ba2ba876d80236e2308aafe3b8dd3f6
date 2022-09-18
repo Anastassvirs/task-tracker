@@ -1,0 +1,63 @@
+
+­
+java:S1192ª"•Define a constant instead of duplicating this literal "Ğ’Ğ¾ Ğ²Ñ€ĞµĞ¼Ñ Ğ²Ñ‹Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ñ Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ° Ğ²Ğ¾Ğ·Ğ½Ğ¸ĞºĞ»Ğ° Ğ¾ÑˆĞ¸Ğ±ĞºĞ°.
+" 20 times.(ï¥éŞ
+´
+java:S1192«"œDefine a constant instead of duplicating this literal "ĞŸÑ€Ğ¾Ğ²ĞµÑ€ÑŒÑ‚Ğµ, Ğ¿Ğ¾Ğ¶Ğ°Ğ»ÑƒĞ¹ÑÑ‚Ğ°, Ğ°Ğ´Ñ€ĞµÑ Ğ¸ Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚Ğµ Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚ĞºÑƒ." 20 times.(–å¿µ
+\
+java:S1192h"FDefine a constant instead of duplicating this literal "\\d+$" 8 times.(‰Ô
+K
+java:S1191"5Use classes from the Java API instead of Sun classes.(üÕÙä
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(€îóö
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(‚Û§Ò
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(½ŠÙ
+\
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(Ø­Áşÿÿÿÿ
+?
+java:S3010*"$Remove this assignment of "manager".(Œ¬Ÿûùÿÿÿÿ
+<
+java:S3010,"!Remove this assignment of "gson".(•å¦¸ùÿÿÿÿ
+8
+java:S3010-"#Remove this assignment of "server".(›§E
+P
+java:S2209*"5Change this instance-reference to a static reference.(Œ¬Ÿûùÿÿÿÿ
+Q
+java:S2696:"6Make the enclosing method "static" or remove this set.(º¡Şÿÿÿÿÿÿ
+Q
+java:S2696="6Make the enclosing method "static" or remove this set.(ìİ•şÿÿÿÿ
+N	java:S106J"9Replace this use of System.out or System.err by a logger.(……Ñ
+M
+java:S3972S"7Move this "if" to a new line or add the missing "else".(ÿ²Ì¨
+M
+java:S3972U"7Move this "if" to a new line or add the missing "else".(”¼Ş
+O	java:S106ª"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106¾"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106Ò"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106â"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106ò"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106‚"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+T	java:S106Œ"9Replace this use of System.out or System.err by a logger.(˜”·±ùÿÿÿÿ
+O	java:S106“"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106£"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106³"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106Ã"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106Ó"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+O	java:S106ã"9Replace this use of System.out or System.err by a logger.(ï¥éŞ
+V	java:S106ó"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8í´ûÖ´0
+V	java:S106€"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8ï´ûÖ´0
+V	java:S106"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8ğ´ûÖ´0
+V	java:S106›"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8ò´ûÖ´0
+V	java:S106¨"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8ö´ûÖ´0
+V	java:S106µ"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8È™ıÖ´0
+V	java:S106Â"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8Ë™ıÖ´0
+V	java:S106Ï"9Replace this use of System.out or System.err by a logger.(ï¥éŞ8ÎşÖ´0
+[	java:S106Ú"9Replace this use of System.out or System.err by a logger.(ìœ¼Âøÿÿÿÿ8ĞşÖ´0
+:
+java:S3398P"$Move this method into "TaskHandler".(½öá©
+@
+java:S3398‚"$Move this method into "TaskHandler".(±ô™Ìüÿÿÿÿ
+:
+java:S3398]"$Move this method into "TaskHandler".(‹İí

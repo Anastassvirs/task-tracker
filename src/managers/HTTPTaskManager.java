@@ -16,10 +16,6 @@ public class HTTPTaskManager extends FileBackedTasksManager {
     private final Gson gson;
     private final KVTaskClient client;
 
-    public HTTPTaskManager(int port) {
-        this(port, false);
-    }
-
     public HTTPTaskManager(int port, boolean load) {
         super(null);
         gson = new Gson();

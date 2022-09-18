@@ -10,7 +10,7 @@ public abstract class Managers {
     }
 
     public static HTTPTaskManager getDefault() {
-        HTTPTaskManager manager = new HTTPTaskManager(8078);
+        HTTPTaskManager manager = new HTTPTaskManager(8078, false);
         return manager;
     }
 

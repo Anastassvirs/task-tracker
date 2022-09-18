@@ -1,0 +1,17 @@
+
+D
+java:S3740<"/Provide the parametrized type for this generic.(§äÊ]
+–
+java:S1192!"{Define a constant instead of duplicating this literal "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² Ð·Ð°Ð¿Ñ€Ð¾ÑÐµ Ð½Ð° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ.
+" 3 times.(õ°§÷ýÿÿÿÿ
+¬
+java:S1192"Define a constant instead of duplicating this literal "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² Ð·Ð°Ð¿Ñ€Ð¾ÑÐµ Ð½Ð° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ. ÐšÐ¾Ð´ Ð¾Ñ‚Ð²ÐµÑ‚Ð°: " 3 times.(ìßø‹ùÿÿÿÿ
+m	java:S116"SRename this field "APIToken" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤ø©¶úÿÿÿÿ
+t
+java:S2142 "^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(òž¶È
+T
+java:S1858">"body" returns a string, there's no need to call "toString()".(é„å°
+t
+java:S21420"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(òž¶È
+t
+java:S2142A"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(òž¶È

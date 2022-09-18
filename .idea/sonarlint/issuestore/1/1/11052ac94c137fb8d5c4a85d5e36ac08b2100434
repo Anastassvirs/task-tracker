@@ -1,0 +1,192 @@
+
+„
+java:S1192ù"hDefine a constant instead of duplicating this literal "Test addNewSubtask description for Epic" 5 times.(õ‚…ùÿÿÿÿ
+t
+java:S1192÷"]Define a constant instead of duplicating this literal "Test getPrioritizedTasksTest" 5 times.(ñŠ›
+†
+java:S1192ü"jDefine a constant instead of duplicating this literal "Test getPrioritizedTasksTest description2" 3 times.(Ûˆÿÿÿÿÿÿ
+s
+java:S11922"]Define a constant instead of duplicating this literal "Test getAllEpics description" 4 times.(“ÍÓ
+
+java:S1192Ä"jDefine a constant instead of duplicating this literal "Ð­Ð¿Ð¸ÐºÐ¸ Ð½Ð° Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÑŽÑ‚ÑÑ." 3 times.(—¶‡‘
+ƒ
+java:S1192²"lDefine a constant instead of duplicating this literal "ÐŸÐ¾Ð´Ð·Ð°Ð´Ð°Ñ‡Ð¸ Ð½Ðµ ÑÐ¾Ð²Ð¿Ð°Ð´Ð°ÑŽÑ‚." 4 times.(¾ˆ®
+j
+java:S1192‘"NDefine a constant instead of duplicating this literal "Test validate" 8 times.(’ŒÛÝþÿÿÿÿ
+
+java:S1192T"tDefine a constant instead of duplicating this literal "ÐÐµÐ²ÐµÑ€Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¿Ð¸ÐºÐ¾Ð²." 4 times.(Ã…—Îøÿÿÿÿ
+~
+java:S1192”"bDefine a constant instead of duplicating this literal "Ð—Ð°Ð´Ð°Ñ‡Ð° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°." 5 times.(ÔŒØ üÿÿÿÿ
+{
+java:S1192Æ"dDefine a constant instead of duplicating this literal "Ð­Ð¿Ð¸ÐºÐ¸ Ð½Ðµ ÑÐ¾Ð²Ð¿Ð°Ð´Ð°ÑŽÑ‚." 3 times.(òî¤
+n
+java:S1192Ë"WDefine a constant instead of duplicating this literal "Test findEveryTaskByID" 3 times.(†¡Ï•
+o
+java:S1192ð"XDefine a constant instead of duplicating this literal "Test deleteSubtaskByNum" 3 times.(¼¾òƒ
+o
+java:S1192ù"SDefine a constant instead of duplicating this literal "Test addNewSubtask" 9 times.(õ‚…ùÿÿÿÿ
+
+java:S1192@"rDefine a constant instead of duplicating this literal "ÐŸÐ¾Ð´Ð·Ð°Ð´Ð°Ñ‡Ð¸ Ð½Ðµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÑŽÑ‚ÑÑ." 3 times.(¸×—üÿÿÿÿ
+ˆ
+java:S1192+"rDefine a constant instead of duplicating this literal "ÐÐµÐ²ÐµÑ€Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð´Ð°Ñ‡." 4 times.(Ì™ÄÑ
+t
+java:S1192Î"XDefine a constant instead of duplicating this literal "Test findEveryTaskByID2" 3 times.(Éûûæúÿÿÿÿ
+€
+java:S1192Î"dDefine a constant instead of duplicating this literal "Test findEveryTaskByID description2" 3 times.(Éûûæúÿÿÿÿ
+„
+java:S1192«"hDefine a constant instead of duplicating this literal "ÐŸÐ¾Ð´Ð·Ð°Ð´Ð°Ñ‡Ð° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°." 3 times.(Ç–Øýûÿÿÿÿ
+ƒ
+java:S1192˜"lDefine a constant instead of duplicating this literal "Ð—Ð°Ð´Ð°Ñ‡Ð¸ Ð½Ð° Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÑŽÑ‚ÑÑ." 5 times.(ÝÝàº
+y
+java:S1192h"cDefine a constant instead of duplicating this literal "Test deleteAllSubtasks description" 4 times.(—ßý¨
+l
+java:S1192ç"PDefine a constant instead of duplicating this literal "Test addNewTask" 4 times.(ó¢«‘ýÿÿÿÿ
+x
+java:S1192ç"\Define a constant instead of duplicating this literal "Test addNewTask description" 4 times.(ó¢«‘ýÿÿÿÿ
+‚
+java:S1192š"fDefine a constant instead of duplicating this literal "Ð—Ð°Ð´Ð°Ñ‡Ð¸ Ð½Ðµ ÑÐ¾Ð²Ð¿Ð°Ð´Ð°ÑŽÑ‚." 4 times.(ÇÎÉ•ûÿÿÿÿ
+g
+java:S11922"QDefine a constant instead of duplicating this literal "Test getAllEpics" 4 times.(“ÍÓ
+m
+java:S1192h"WDefine a constant instead of duplicating this literal "Test deleteAllSubtasks" 4 times.(—ßý¨
+{
+java:S1192ü"_Define a constant instead of duplicating this literal "Test addNewSubtask description" 4 times.(ŒÆóýÿÿÿÿ
+“
+java:S1192A"xDefine a constant instead of duplicating this literal "ÐÐµÐ²ÐµÑ€Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð´Ð·Ð°Ð´Ð°Ñ‡." 6 times.(è¸Ýþùÿÿÿÿ
+‰
+java:S1192°"rDefine a constant instead of duplicating this literal "ÐŸÐ¾Ð´Ð·Ð°Ð´Ð°Ñ‡Ð¸ Ð½Ð° Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÑŽÑ‚ÑÑ." 4 times.(ðÞ¬”
+=
+java:S1905 "'Remove this unnecessary cast to "long".(ˆ¥Ð
+B
+java:S1905#"'Remove this unnecessary cast to "long".(öÉéÊúÿÿÿÿ
+B
+java:S19053"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+B
+java:S19056"'Remove this unnecessary cast to "long".(ê·åöýÿÿÿÿ
+B
+java:S19059"'Remove this unnecessary cast to "long".(ó¸¦Ìüÿÿÿÿ
+=
+java:S1905I"'Remove this unnecessary cast to "long".(ˆ¥Ð
+B
+java:S1905L"'Remove this unnecessary cast to "long".(öÉéÊúÿÿÿÿ
+B
+java:S1905\"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+B
+java:S1905i"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+=
+java:S1905l"'Remove this unnecessary cast to "long".(°äÄ
+B
+java:S1905y"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+=
+java:S1905|"'Remove this unnecessary cast to "long".(°äÄ
+>
+java:S1905Œ"'Remove this unnecessary cast to "long".(ˆ¥Ð
+C
+java:S1905"'Remove this unnecessary cast to "long".(£ß‚þÿÿÿÿÿ
+C
+java:S1905 "'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905£"'Remove this unnecessary cast to "long".(°ÕŸæúÿÿÿÿ
+C
+java:S1905¦"'Remove this unnecessary cast to "long".(Ýïõôýÿÿÿÿ
+C
+java:S1905¸"'Remove this unnecessary cast to "long".(íÇ½ÿÿÿÿÿ
+>
+java:S1905»"'Remove this unnecessary cast to "long".(¡¯¡Ç
+C
+java:S1905Ì"'Remove this unnecessary cast to "long".(´À£ýýÿÿÿÿ
+C
+java:S1905Ï"'Remove this unnecessary cast to "long".(Â„Ýµýÿÿÿÿ
+C
+java:S1905Ò"'Remove this unnecessary cast to "long".(ÝÖËûÿÿÿÿÿ
+C
+java:S1905Õ"'Remove this unnecessary cast to "long".(²µöïúÿÿÿÿ
+>
+java:S1905Ø"'Remove this unnecessary cast to "long".(ˆ¥Ð
+C
+java:S1905Û"'Remove this unnecessary cast to "long".(ˆçùÏùÿÿÿÿ
+>
+java:S1905è"'Remove this unnecessary cast to "long".(ˆ¥Ð
+C
+java:S1905ú"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905ý"'Remove this unnecessary cast to "long".(°ÕŸæúÿÿÿÿ
+>
+java:S1905"'Remove this unnecessary cast to "long".(ˆ¥Ð
+>
+java:S1905¡"'Remove this unnecessary cast to "long".(ˆ¥Ð
+>
+java:S1905¦"'Remove this unnecessary cast to "long".(­¶«
+C
+java:S1905´"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905·"'Remove this unnecessary cast to "long".(°ÕŸæúÿÿÿÿ
+C
+java:S1905¼"'Remove this unnecessary cast to "long".(Ùëï´ùÿÿÿÿ
+C
+java:S1905Ê"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905Ï"'Remove this unnecessary cast to "long".(·¾ž™úÿÿÿÿ
+>
+java:S1905Ý"'Remove this unnecessary cast to "long".(ˆ¥Ð
+C
+java:S1905à"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905ñ"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905õ"'Remove this unnecessary cast to "long".(»ƒÁ÷ùÿÿÿÿ
+>
+java:S1905ù"'Remove this unnecessary cast to "long".(ªáá–
+>
+java:S1905†"'Remove this unnecessary cast to "long".(ˆ¥Ð
+C
+java:S1905‰"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905–"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905™"'Remove this unnecessary cast to "long".(ê·åöýÿÿÿÿ
+C
+java:S1905œ"'Remove this unnecessary cast to "long".(Ðû´üÿÿÿÿ
+C
+java:S1905¬"'Remove this unnecessary cast to "long".(‚“Ñáúÿÿÿÿ
+C
+java:S1905¹"'Remove this unnecessary cast to "long".(®¿ûîþÿÿÿÿ
+>
+java:S1905Ï"'Remove this unnecessary cast to "long".(ˆ¥Ð
+>
+java:S1905Ú"'Remove this unnecessary cast to "long".(×ìžò
+C
+java:S1905ä"'Remove this unnecessary cast to "long".(ÔéÖ­ýÿÿÿÿ
+=
+java:S1905ç"'Remove this unnecessary cast to "long".(ÞÍŠF
+>
+java:S1905í"'Remove this unnecessary cast to "long".(ÕÙŠ
+C
+java:S1905ù"'Remove this unnecessary cast to "long".(çöüñÿÿÿÿÿ
+C
+java:S1905ý"'Remove this unnecessary cast to "long".(˜™äôþÿÿÿÿ
+>
+java:S1905"'Remove this unnecessary cast to "long".(þÎÝ„
+C
+java:S1905…"'Remove this unnecessary cast to "long".(î‘ÔÈýÿÿÿÿ
+C
+java:S1905‰"'Remove this unnecessary cast to "long".(¡Ë¬óøÿÿÿÿ
+T	java:S106‹"9Replace this use of System.out or System.err by a logger.(½ÌŠ”ýÿÿÿÿ
+C
+java:S1905“"'Remove this unnecessary cast to "long".(þÀ’†üÿÿÿÿ
+C
+java:S1905—"'Remove this unnecessary cast to "long".(ôÌµüúÿÿÿÿ
+>
+java:S1905›"'Remove this unnecessary cast to "long".(†Ðô²
+C
+java:S1905Ÿ"'Remove this unnecessary cast to "long".(Ôç¹Õÿÿÿÿÿ
+>
+java:S1905¢"'Remove this unnecessary cast to "long".(Ê ï‘
+C
+java:S1905¦"'Remove this unnecessary cast to "long".(ê¯†Ðûÿÿÿÿ
+C
+java:S1905ª"'Remove this unnecessary cast to "long".(“¥¤Ÿÿÿÿÿÿ
+C
+java:S1905°"'Remove this unnecessary cast to "long".(íµìòüÿÿÿÿ
+R
+java:S1128"<Remove this unused import 'org.junit.jupiter.api.AfterEach'.(ªÎµã

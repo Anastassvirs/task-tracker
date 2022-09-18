@@ -1,0 +1,61 @@
+
+›
+java:S1192."„Define a constant instead of duplicating this literal "ĞĞµĞ²ĞµÑ€Ğ½Ğ¾Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ·Ğ°Ğ´Ğ°Ñ‡ Ğ² Ğ¸ÑÑ‚Ğ¾Ñ€Ğ¸Ğ¸." 4 times.(¡ßôê
+–
+java:S1192-"€Define a constant instead of duplicating this literal "Ğ—Ğ°Ğ´Ğ°Ñ‡Ğ¸ Ğ¸Ğ· Ğ¸ÑÑ‚Ğ¾Ñ€Ğ¸Ğ¸ Ğ½Ğµ Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ÑÑ‚ÑÑ." 4 times.(œÍì|
+L
+java:S2696"6Make the enclosing method "static" or remove this set.(’¼àê
+L
+java:S2696)"6Make the enclosing method "static" or remove this set.(’¼àê
+S
+java:S1854P"8Remove this useless assignment to local variable "task".(œ—¡Ÿüÿÿÿÿ
+N
+java:S1854O"8Remove this useless assignment to local variable "task".(ˆâ‚
+B
+java:S1905F"'Remove this unnecessary cast to "long".(–­¹ßøÿÿÿÿ
+B
+java:S1905J"'Remove this unnecessary cast to "long".(šıÂùıÿÿÿÿ
+?
+java:S1481O")Remove this unused "task" local variable.(ˆâ‚
+Q
+java:S2696R"6Make the enclosing method "static" or remove this set.(½æŠ¦úÿÿÿÿ
+S
+java:S1854s"8Remove this useless assignment to local variable "task".(†Ê“„ùÿÿÿÿ
+N
+java:S1854r"8Remove this useless assignment to local variable "task".(‚µŒï
+S
+java:S1854q"8Remove this useless assignment to local variable "task".(”÷Ş½şÿÿÿÿ
+B
+java:S1905^"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+B
+java:S1905b"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+B
+java:S1905g"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+B
+java:S1905l"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+D
+java:S1481q")Remove this unused "task" local variable.(”÷Ş½şÿÿÿÿ
+Q
+java:S2696u"6Make the enclosing method "static" or remove this set.(½æŠ¦úÿÿÿÿ
+T
+java:S1854"8Remove this useless assignment to local variable "task".(¤‡ÃÕÿÿÿÿÿ
+T
+java:S1854"8Remove this useless assignment to local variable "task".(ùáç«üÿÿÿÿ
+C
+java:S1905ƒ"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+C
+java:S1905ˆ"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ
+E
+java:S1481")Remove this unused "task" local variable.(ùáç«üÿÿÿÿ
+R
+java:S2696"6Make the enclosing method "static" or remove this set.(½æŠ¦úÿÿÿÿ
+O
+java:S1854¢"8Remove this useless assignment to local variable "task".(ˆâ‚
+C
+java:S1905"'Remove this unnecessary cast to "long".(–­¹ßøÿÿÿÿ
+@
+java:S1481¢")Remove this unused "task" local variable.(ˆâ‚
+R
+java:S2696¤"6Make the enclosing method "static" or remove this set.(½æŠ¦úÿÿÿÿ
+C
+java:S1905¨"'Remove this unnecessary cast to "long".(®¿ûîşÿÿÿÿ

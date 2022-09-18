@@ -32,7 +32,7 @@ public class HttpTaskServer {
     private static Gson gson;
     private static HttpServer server;
     private static HTTPTaskManager manager;
-    private static String fullpath;
+    private static String fullPath;
 
     public HttpTaskServer() throws IOException {
         this(Managers.getDefault());
@@ -55,10 +55,10 @@ public class HttpTaskServer {
     static class TaskHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
-            fullpath = "";
+            fullPath = "";
 
             String method = httpExchange.getRequestMethod();
-            fullpath = httpExchange.getRequestURI().toString();
+            fullPath = httpExchange.getRequestURI().toString();
 
             switch(method) {
                 case HTTP_POST:
@@ -72,17 +72,19 @@ public class HttpTaskServer {
                     break;
                 default:
                     System.out.println("Некорректный метод!");
+                    httpExchange.sendResponseHeaders(404, 0);
+                    httpExchange.close();
                     break;
             }
         }
     }
 
     private static void postRequests(HttpExchange httpExchange) throws IOException {
-        if (fullpath.endsWith(TASK_PATH)) {
+        if (fullPath.endsWith(TASK_PATH)) {
             postTask(httpExchange);
-        } if (fullpath.endsWith(SUBTASK_PATH)) {
+        } if (fullPath.endsWith(SUBTASK_PATH)) {
             postSubtask(httpExchange);
-        } if (fullpath.endsWith(EPIC_PATH)) {
+        } if (fullPath.endsWith(EPIC_PATH)) {
             postEpic(httpExchange);
         } else {
             httpExchange.sendResponseHeaders(404, 0);
@@ -91,34 +93,34 @@ public class HttpTaskServer {
     }
 
     private static void getRequests(HttpExchange httpExchange) throws IOException {
-        if (fullpath.endsWith(TASK_PATH)) {
+        if (fullPath.endsWith(TASK_PATH)) {
             getAllTasks(httpExchange);
-        } else if (fullpath.endsWith(SUBTASK_PATH)) {
+        } else if (fullPath.endsWith(SUBTASK_PATH)) {
             getAllSubtasks(httpExchange);
-        } else if (fullpath.endsWith(EPIC_PATH)) {
+        } else if (fullPath.endsWith(EPIC_PATH)) {
             getAllEpics(httpExchange);
-        } else if (fullpath.endsWith(CONTEXT + "/")) {
+        } else if (fullPath.endsWith(CONTEXT + "/")) {
             getAllSortedTasks(httpExchange);
-        } else if (fullpath.endsWith("/history")) {
+        } else if (fullPath.endsWith("/history")) {
             getHistory(httpExchange);
-        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             getTaskByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             getSubtaskByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             getEpicByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + ANYTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + ANYTASK_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + ANYTASK_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + ANYTASK_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             getAnyTaskByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + SUBTASK_PATH + EPIC_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             getSubtasksFromEpic(httpExchange, id);
         } else {
@@ -128,24 +130,24 @@ public class HttpTaskServer {
     }
 
     private static void deleteRequests(HttpExchange httpExchange) throws IOException {
-        if (fullpath.endsWith(TASK_PATH + "/")) {
+        if (fullPath.endsWith(TASK_PATH + "/")) {
             deleteAllTasks(httpExchange);
-        } else if (fullpath.endsWith(SUBTASK_PATH + "/")) {
+        } else if (fullPath.endsWith(SUBTASK_PATH + "/")) {
             deleteAllSubtasks(httpExchange);
-        } else if (fullpath.endsWith(EPIC_PATH + "/")) {
+        } else if (fullPath.endsWith(EPIC_PATH + "/")) {
             deleteAllEpics(httpExchange);
-        } else if (fullpath.endsWith(ANYTASK_PATH + "/")) {
+        } else if (fullPath.endsWith(ANYTASK_PATH + "/")) {
             deleteAllTasksEpicsAndSubtasks(httpExchange);
-        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + TASK_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + TASK_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             deleteTaskByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + SUBTASK_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + SUBTASK_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             deleteSubtaskByID(httpExchange, id);
-        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullpath)) {
-            String idString = fullpath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
+        } else if (Pattern.matches("^" + CONTEXT + EPIC_PATH + ID_PATH + "\\d+$", fullPath)) {
+            String idString = fullPath.replaceFirst(CONTEXT + EPIC_PATH + ID_PATH, "");
             int id = parsePathID(idString, httpExchange);
             deleteEpicByID(httpExchange, id);
         } else {
@@ -166,7 +168,7 @@ public class HttpTaskServer {
             }
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -186,7 +188,7 @@ public class HttpTaskServer {
             }
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -206,7 +208,7 @@ public class HttpTaskServer {
             }
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -222,7 +224,7 @@ public class HttpTaskServer {
             try (OutputStream os = httpExchange.getResponseBody()) {
                 os.write(response.getBytes());
             }
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -238,7 +240,7 @@ public class HttpTaskServer {
             try (OutputStream os = httpExchange.getResponseBody()) {
                 os.write(response.getBytes());
             }
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -254,7 +256,7 @@ public class HttpTaskServer {
             try (OutputStream os = httpExchange.getResponseBody()) {
                 os.write(response.getBytes());
             }
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -271,7 +273,7 @@ public class HttpTaskServer {
             try (OutputStream os = httpExchange.getResponseBody()) {
                 os.write(response.getBytes());
             }
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -287,7 +289,7 @@ public class HttpTaskServer {
             try (OutputStream os = httpExchange.getResponseBody()) {
                 os.write(response.getBytes());
             }
-        } catch (NullPointerException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -380,7 +382,7 @@ public class HttpTaskServer {
             manager.deleteAllTasks();
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -393,7 +395,7 @@ public class HttpTaskServer {
             manager.deleteAllSubtasks();
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -407,7 +409,7 @@ public class HttpTaskServer {
             manager.deleteAllEpics();
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -420,7 +422,7 @@ public class HttpTaskServer {
             manager.deleteAll();
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -433,7 +435,7 @@ public class HttpTaskServer {
             manager.deleteTaskByNum(id);
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -446,7 +448,7 @@ public class HttpTaskServer {
             manager.deleteSubtaskByNum(id);
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);
@@ -459,7 +461,7 @@ public class HttpTaskServer {
             manager.deleteEpicByNum(id);
             httpExchange.sendResponseHeaders(200, 0);
             httpExchange.close();
-        } catch (NullPointerException | IOException e) {
+        } catch (IOException e) {
             System.out.println("Во время выполнения запроса возникла ошибка.\n" +
                     "Проверьте, пожалуйста, адрес и повторите попытку.");
             httpExchange.sendResponseHeaders(404, 0);

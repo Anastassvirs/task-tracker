@@ -56,15 +56,19 @@ public class HTTPTaskManager extends FileBackedTasksManager {
             if (id > numberOfTasks) {
                 numberOfTasks = id;
             }
-            if (task.getTaskType() == Types.TASK) {
-                this.tasks.put(id, task);
-                prioritizedTasks.add(task);
-            } else if (task.getTaskType() == Types.SUBTASK) {
-                this.subtasks.put(id, (Subtask) task);
-                prioritizedTasks.add(task);
-            } else if (task.getTaskType() == Types.EPIC) {
-                this.epics.put(id, (Epic) task);
-                prioritizedTasks.add(task);
+            switch (task.getTaskType()) {
+                case TASK:
+                    this.tasks.put(id, task);
+                    prioritizedTasks.add(task);
+                    break;
+                case SUBTASK:
+                    this.subtasks.put(id, (Subtask) task);
+                    prioritizedTasks.add(task);
+                    break;
+                case EPIC:
+                    this.epics.put(id, (Epic) task);
+                    prioritizedTasks.add(task);
+                    break;
             }
         }
     }
